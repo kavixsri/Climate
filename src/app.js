@@ -25,10 +25,10 @@ import { createRouter } from './router.js';
  * @param {string} modulePath - Relative path to the view module
  * @returns {(container: HTMLElement) => Promise<(() => void)|void>}
  */
-function lazyView(modulePath) {
+function lazyView(importFn) {
   return async (container) => {
     try {
-      const mod = await import(modulePath);
+      const mod = await importFn();
 
       // Find the render function: default export, or first export starting with 'render'
       let render = mod.default;
@@ -44,9 +44,9 @@ function lazyView(modulePath) {
       if (typeof render === 'function') {
         return render(container);
       }
-      console.warn(`[App] Module "${modulePath}" has no render function.`);
+      console.warn(`[App] Module loaded via lazyView has no render function.`);
     } catch (err) {
-      console.error(`[App] Failed to load view "${modulePath}":`, err);
+      console.error(`[App] Failed to load view:`, err);
       const errorMsg = document.createElement('div');
       errorMsg.classList.add('empty-state', 'page-view');
 
@@ -71,32 +71,32 @@ function lazyView(modulePath) {
 const ROUTES = [
   {
     path: '/dashboard',
-    component: lazyView('./components/dashboard.js'),
+    component: lazyView(() => import('./components/dashboard.js')),
     title: 'Dashboard'
   },
   {
     path: '/calculator',
-    component: lazyView('./components/calculator-form.js'),
+    component: lazyView(() => import('./components/calculator-form.js')),
     title: 'Calculator'
   },
   {
     path: '/log',
-    component: lazyView('./components/activity-log.js'),
+    component: lazyView(() => import('./components/activity-log.js')),
     title: 'Activity Log'
   },
   {
     path: '/insights',
-    component: lazyView('./components/insights-panel.js'),
+    component: lazyView(() => import('./components/insights-panel.js')),
     title: 'Insights'
   },
   {
     path: '/goals',
-    component: lazyView('./components/goals-tracker.js'),
+    component: lazyView(() => import('./components/goals-tracker.js')),
     title: 'Goals'
   },
   {
     path: '/achievements',
-    component: lazyView('./components/achievements.js'),
+    component: lazyView(() => import('./components/achievements.js')),
     title: 'Achievements'
   }
 ];

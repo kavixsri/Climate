@@ -364,4 +364,4 @@ export function validateGoal(goal) {
   return { valid: errors.length === 0, errors };
 }
 
-export { VALID_CATEGORIES, VALID_PERIODS };
+export { VALID_PERIODS };
