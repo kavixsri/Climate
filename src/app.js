@@ -9,42 +9,23 @@
  */
 
 import { createRouter } from './router.js';
+import { renderDashboard } from './components/dashboard.js';
+import { renderCalculatorForm } from './components/calculator-form.js';
+import { renderActivityLog } from './components/activity-log.js';
+import { renderInsightsPanel } from './components/insights-panel.js';
+import { renderGoalsTracker } from './components/goals-tracker.js';
+import { renderAchievements } from './components/achievements.js';
 
 /* --------------------------------------------------------------------------
-   Lazy View Imports
-   --------------------------------------------------------------------------
-   Each view module exports a default render function:
-   (container: HTMLElement) => (() => void) | void
+   View Wrapper
    -------------------------------------------------------------------------- */
-
-/**
- * Lazy-load a view module and call its render export.
- * Falls back to an error state if the module fails to load.
- * Supports both default exports and named render* exports.
- *
- * @param {string} modulePath - Relative path to the view module
- * @returns {(container: HTMLElement) => Promise<(() => void)|void>}
- */
-function lazyView(importFn) {
+function wrapView(renderFn) {
   return async (container) => {
     try {
-      const mod = await importFn();
-
-      // Find the render function: default export, or first export starting with 'render'
-      let render = mod.default;
-      if (typeof render !== 'function') {
-        for (const key of Object.keys(mod)) {
-          if (key.startsWith('render') && typeof mod[key] === 'function') {
-            render = mod[key];
-            break;
-          }
-        }
+      if (typeof renderFn === 'function') {
+        return renderFn(container);
       }
-
-      if (typeof render === 'function') {
-        return render(container);
-      }
-      console.warn(`[App] Module loaded via lazyView has no render function.`);
+      console.warn(`[App] View has no render function.`);
     } catch (err) {
       console.error(`[App] Failed to load view:`, err);
       const errorMsg = document.createElement('div');
@@ -56,7 +37,7 @@ function lazyView(importFn) {
 
       const desc = document.createElement('p');
       desc.classList.add('empty-state__description');
-      desc.textContent = 'This section could not be loaded. Please try again later.';
+      desc.textContent = 'This section encountered an error. Please try again later.';
 
       errorMsg.appendChild(title);
       errorMsg.appendChild(desc);
@@ -71,32 +52,32 @@ function lazyView(importFn) {
 const ROUTES = [
   {
     path: '/dashboard',
-    component: lazyView(() => import('./components/dashboard.js')),
+    component: wrapView(renderDashboard),
     title: 'Dashboard'
   },
   {
     path: '/calculator',
-    component: lazyView(() => import('./components/calculator-form.js')),
+    component: wrapView(renderCalculatorForm),
     title: 'Calculator'
   },
   {
     path: '/log',
-    component: lazyView(() => import('./components/activity-log.js')),
+    component: wrapView(renderActivityLog),
     title: 'Activity Log'
   },
   {
     path: '/insights',
-    component: lazyView(() => import('./components/insights-panel.js')),
+    component: wrapView(renderInsightsPanel),
     title: 'Insights'
   },
   {
     path: '/goals',
-    component: lazyView(() => import('./components/goals-tracker.js')),
+    component: wrapView(renderGoalsTracker),
     title: 'Goals'
   },
   {
     path: '/achievements',
-    component: lazyView(() => import('./components/achievements.js')),
+    component: wrapView(renderAchievements),
     title: 'Achievements'
   }
 ];
