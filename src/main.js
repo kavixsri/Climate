@@ -10,6 +10,8 @@
 
 import './styles/index.css';
 import { createApp } from './app.js';
+import { createStore } from './store/store.js';
+import { createStorage } from './store/storage.js';
 
 /** App version — update on each release */
 const APP_VERSION = '1.0.0';
@@ -27,6 +29,10 @@ async function init() {
     if (!appContainer) {
       throw new Error('Could not find #app element in the DOM');
     }
+
+    // ── Initialize Store ──
+    const storage = createStorage('app');
+    createStore(storage);
 
     const app = createApp();
     app.mount(appContainer);
@@ -93,7 +99,7 @@ function registerServiceWorker() {
 
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('./public/sw.js')
+      .register('./sw.js')
       .then((registration) => {
         console.log('[SW] Registered with scope:', registration.scope);
 
