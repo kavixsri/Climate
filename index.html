@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarbonLens — Personal Carbon Footprint Tracker</title>
+
+  <!-- Security -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+
+  <!-- SEO & Meta -->
+  <meta name="description" content="Track, understand, and reduce your personal carbon footprint with CarbonLens. Beautiful analytics, smart insights, and actionable goals.">
+  <meta name="theme-color" content="#0a0f1a">
+  <meta name="color-scheme" content="dark light">
+  <meta name="application-name" content="CarbonLens">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CarbonLens">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="public/manifest.json">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="public/icons/icon.svg">
+  <link rel="apple-touch-icon" href="public/icons/icon.svg">
+
+</head>
+<body>
+  <!-- Skip Navigation — Accessible keyboard shortcut -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- App Root -->
+  <div id="app" role="application" aria-label="CarbonLens Carbon Footprint Tracker"></div>
+
+  <!-- Toast Notifications — Live region for screen readers -->
+  <div id="toast-container" role="status" aria-live="polite"></div>
+
+  <!-- Modal Root — Dynamic dialogs mount here -->
+  <div id="modal-root" role="dialog" aria-hidden="true"></div>
+
+  <!-- Screen Reader Announcer — For dynamic route changes etc. -->
+  <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- Noscript Fallback -->
+  <noscript>
+    <div style="padding: 2rem; text-align: center; font-family: sans-serif; color: #f1f5f9; background: #0a0f1a; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+      <div>
+        <h1 style="margin-bottom: 1rem;">CarbonLens requires JavaScript</h1>
+        <p>Please enable JavaScript in your browser settings to use this application.</p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- App Entry Point -->
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

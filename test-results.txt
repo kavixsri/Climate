@@ -1,0 +1,796 @@
+﻿
+[1m[46m RUN [49m[22m [36mv3.2.6 [39m[90mC:/Users/Kavita Dixit/.gemini/antigravity/scratch/Climate[39m
+
+ [31mΓ¥»[39m tests/integration/data-persistence.test.js [2m([22m[2m8 tests[22m[2m | [22m[31m6 failed[39m[2m)[22m[32m 16[2mms[22m[39m
+[31m   [31m├ù[31m data persistence[2m > [22mstate persists to localStorage[39m[32m 9[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+[31m   [31m├ù[31m data persistence[2m > [22mstate loads from localStorage on init[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading 'id')[39m
+[31m   [31m├ù[31m data persistence[2m > [22mmigration runs on old data format[39m[32m 2[2mms[22m[39m
+[31m     ΓåÆ expected undefined to be defined[39m
+[31m   [31m├ù[31m data persistence[2m > [22mcorrupted data falls back to defaults[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading 'theme')[39m
+   [32mΓ£ô[39m data persistence[2m > [22mhandles empty-string storage gracefully[32m 0[2mms[22m[39m
+   [32mΓ£ô[39m data persistence[2m > [22mhandles "null" stored value[32m 0[2mms[22m[39m
+[31m   [31m├ù[31m data persistence[2m > [22mhandles storage quota error gracefully[39m[32m 2[2mms[22m[39m
+[31m     ΓåÆ expected [Function] to not throw an error but 'TypeError: [Store] setState requires ΓÇª' was thrown[39m
+[31m   [31m├ù[31m data persistence[2m > [22mchanges from one store instance are visible to a newly created store[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+ [31mΓ¥»[39m tests/unit/store.test.js [2m([22m[2m13 tests[22m[2m | [22m[31m10 failed[39m[2m)[22m[32m 21[2mms[22m[39m
+[31m   [31m├ù[31m store module[2m > [22mcreateStore()[2m > [22minitializes with the provided default state[39m[32m 10[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading 'theme')[39m
+   [32mΓ£ô[39m store module[2m > [22mcreateStore()[2m > [22mthe returned object exposes getState, setState, subscribe, reset[32m 1[2mms[22m[39m
+[31m   [31m├ù[31m store module[2m > [22mgetState()[2m > [22mreturns a deep clone ΓÇö mutations do not affect the store[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ Cannot set properties of undefined (setting 'theme')[39m
+[31m   [31m├ù[31m store module[2m > [22msetState()[2m > [22mupdates state correctly with a partial update[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+[31m   [31m├ù[31m store module[2m > [22msetState()[2m > [22mmerges instead of replacing the whole state[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+[31m   [31m├ù[31m store module[2m > [22msetState()[2m > [22mnotifies subscribers on update[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+   [32mΓ£ô[39m store module[2m > [22msubscribe()[2m > [22mreturns an unsubscribe function[32m 0[2mms[22m[39m
+[31m   [31m├ù[31m store module[2m > [22msubscribe()[2m > [22mstops notifying after unsubscribe[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+[31m   [31m├ù[31m store module[2m > [22msubscribe()[2m > [22msupports multiple subscribers[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+[31m   [31m├ù[31m store module[2m > [22mreset()[2m > [22mrestores the default state[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+   [32mΓ£ô[39m store module[2m > [22mreset()[2m > [22mnotifies subscribers on reset[32m 1[2mms[22m[39m
+[31m   [31m├ù[31m store module[2m > [22mpersistence[2m > [22msaves state to localStorage on setState[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ [Store] setState requires a function argument[39m
+[31m   [31m├ù[31m store module[2m > [22mpersistence[2m > [22mloads state from localStorage on creation[39m[32m 4[2mms[22m[39m
+[31m     ΓåÆ expected [] to deeply equal [ { id: 'seed' } ][39m
+node.exe : [90mstderr[2m | tests/integration/data-persistence.test.js[2m > [22m[2mdata persistence[2m > 
+[22m[2mstate persists to localStorage
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([90mstderr[2m...to localStorage:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[22m[39m[Store] Failed to load persisted state, using defaults: TypeError: this[#storage].get is not a function
+    at new Store [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:116:41[90m)[39m
+    at createStore [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:276:21[90m)[39m
+    at [90mC:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39mtests\integration\data-persistence.test.js:36:30
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:155:11
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:752:26
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@
+vitest/runner[24m/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runTest [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/
+runner[24m/dist/chunk-hooks.js:1574:12[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+
+[90mstderr[2m | tests/unit/store.test.js[2m > [22m[2mstore module[2m > [22m[2mcreateStore()[2m > 
+[22m[2minitializes with the provided default state
+[22m[39m[Store] Failed to load persisted state, using defaults: TypeError: this[#storage].get is not a function
+    at new Store [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:116:41[90m)[39m
+    at createStore [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:276:21[90m)[39m
+    at [90mC:\Users\Kavita Dixit\.gemini\antigravity\scratch\Climate\[39mtests\unit\store.test.js:32:24
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:155:11
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@
+vitest/runner[24m/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runHook [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/
+runner[24m/dist/chunk-hooks.js:1436:51[90m)[39m
+    at callSuiteHook [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@v
+itest/runner[24m/dist/chunk-hooks.js:1442:25[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+
+[90mstderr[2m | tests/unit/store.test.js[2m > [22m[2mstore module[2m > [22m[2mreset()[2m > [22m[2mnotifies 
+subscribers on reset
+[22m[39m[Store] Failed to clear persisted state: TypeError: this[#storage].remove is not a function
+    at Store.reset [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:242:23[90m)[39m
+    at [90mC:\Users\Kavita Dixit\.gemini\antigravity\scratch\Climate\[39mtests\unit\store.test.js:140:13
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:155:11
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:752:26
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@
+vitest/runner[24m/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runTest [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/
+runner[24m/dist/chunk-hooks.js:1574:12[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at runSuite [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest
+/runner[24m/dist/chunk-hooks.js:1729:8[90m)[39m
+
+ [32mΓ£ô[39m tests/accessibility/a11y.test.js [2m([22m[2m20 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+[90mstderr[2m | tests/integration/user-flow.test.js[2m > [22m[2mUser flow integration[2m > [22m[2muser logs an 
+activity ΓåÆ appears in store ΓåÆ totals update
+[22m[39m[Store] Failed to load persisted state, using defaults: TypeError: this[#storage].get is not a function
+    at new Store [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:116:41[90m)[39m
+    at createStore [90m(C:\Users\Kavita 
+Dixit\.gemini\antigravity\scratch\Climate\[39msrc\store\store.js:276:21[90m)[39m
+    at [90mC:\Users\Kavita Dixit\.gemini\antigravity\scratch\Climate\[39mtests\integration\user-flow.test.js:48:24
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:155:11
+    at [90mfile:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/runner[2
+4m/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@
+vitest/runner[24m/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runHook [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@vitest/
+runner[24m/dist/chunk-hooks.js:1436:51[90m)[39m
+    at callSuiteHook [90m(file:///C:/Users/Kavita%20Dixit/.gemini/antigravity/scratch/Climate/[39mnode_modules/[4m@v
+itest/runner[24m/dist/chunk-hooks.js:1442:25[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+
+ [31mΓ¥»[39m tests/integration/user-flow.test.js [2m([22m[2m6 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[32m 15[2mms[22m[39m
+[31m   [31m├ù[31m User flow integration[2m > [22muser logs an activity ΓåÆ appears in store ΓåÆ totals update[39m[32m 10[2mms[22m[39m
+[31m     ΓåÆ No emission factor found for path "transport.car"[39m
+[31m   [31m├ù[31m User flow integration[2m > [22muser creates a goal ΓåÆ progress tracked against logged activities[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ No emission factor found for path "transport.car"[39m
+[31m   [31m├ù[31m User flow integration[2m > [22muser logs multiple activities ΓåÆ category breakdown is correct[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ No emission factor found for path "transport.car"[39m
+[31m   [31m├ù[31m User flow integration[2m > [22muser deletes an activity ΓåÆ totals update correctly[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ No emission factor found for path "transport.car"[39m
+[31m   [31m├ù[31m User flow integration[2m > [22mactivities persist across store re-creation (via storage)[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ No emission factor found for path "transport.car"[39m
+   [32mΓ£ô[39m User flow integration[2m > [22mvalidation prevents bad data from entering the store[32m 1[2mms[22m[39m
+ [31mΓ¥»[39m tests/unit/insights.test.js [2m([22m[2m23 tests[22m[2m | [22m[31m21 failed[39m[2m)[22m[32m 19[2mms[22m[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mreturns an array of insight objects[39m[32m 7[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "id" field[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "title" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "description" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "category" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "impactLevel" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "easeLevel" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "potentialSavingKg" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mevery insight has the required "actionSteps" field[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mimpactLevel is always one of high / medium / low[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22measeLevel is always one of easy / moderate / hard[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mpotentialSavingKg is a non-negative number[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mactionSteps is a non-empty array of strings[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22minsights are relevant to the user's top emission categories[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22mreturns empty array when breakdown is empty[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgenerateInsights()[2m > [22meach insight has a unique id[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ activities must be an array[39m
+[31m   [31m├ù[31m insights module[2m > [22mgetTopEmissionCategories()[2m > [22mreturns categories sorted by emission value (desc)[39m[32m 1[2mms[22m[39m
+[31m     ΓåÆ actual value must be number or bigint, received "undefined"[39m
+   [32mΓ£ô[39m insights module[2m > [22mgetTopEmissionCategories()[2m > [22mreturns all categories present in the breakdown[32m 0[2mms[22m[39m
+   [32mΓ£ô[39m insights module[2m > [22mgetTopEmissionCategories()[2m > [22mreturns empty array for empty breakdown[32m 0[2mms[22m[39m
+[31m   [31m├ù[31m insights module[2m > [22mgetTopEmissionCategories()[2m > [22mfirst element is the highest-emission category[39m[32m 3[2mms[22m[39m
+[31m     ΓåÆ expected { category: 'transport', ΓÇª(2) } to be 'transport' // Object.is equality[39m
+[31m   [31m├ù[31m insights module[2m > [22mgetReductionSuggestions()[2m > [22mreturns suggestions for a valid category[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ Unknown category "transport". Valid categories: transportation, energy, diet, shopping, waste[39m
+[31m   [31m├ù[31m insights module[2m > [22mgetReductionSuggestions()[2m > [22meach suggestion is a non-empty string[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ Unknown category "food". Valid categories: transportation, energy, diet, shopping, waste[39m
+[31m   [31m├ù[31m insights module[2m > [22mgetReductionSuggestions()[2m > [22mreturns empty array for an unknown category[39m[32m 0[2mms[22m[39m
+[31m     ΓåÆ Unknown category "nonexistent". Valid categories: transportation, energy, diet, shopping, waste[39m
+ [32mΓ£ô[39m tests/unit/format.test.js [2m([22m[2m23 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32mΓ£ô[39m tests/unit/emission-factors.test.js [2m([22m[2m31 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32mΓ£ô[39m tests/unit/goals.test.js [2m([22m[2m17 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32mΓ£ô[39m tests/security/xss.test.js [2m([22m[2m48 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32mΓ£ô[39m tests/unit/crypto.test.js [2m([22m[2m11 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32mΓ£ô[39m tests/unit/calculator.test.js [2m([22m[2m23 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+
+[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m[1m[41m Failed Suites 1 [49m[22m[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m
+
+[41m[1m FAIL [22m[49m tests/unit/validation.test.js[2m [ tests/unit/validation.test.js ][22m
+[31m[1mError[22m: Failed to resolve import "../../src/data/emission-factors.js" from 
+"tests/unit/validation.test.js". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/Kavita Dixit/.gemini/antigravity/scratch/Climate/tests/unit/validation.test.js[39m:16:29
+[33m  14 |    isValidCategory,
+  15 |  } from '../../src/utils/validation.js';
+  16 |  import { CATEGORIES } from '../../src/data/emission-factors.js';
+     |                              ^
+  17 |  
+  18 |  // ---------------------------------------------------------------------------[39m
+[90m [2mΓ¥»[22m TransformPluginContext._formatLog ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Climate/
+node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:[2m42658:41[22m[39m
+[90m [2mΓ¥»[22m TransformPluginContext.error ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Climate/node_
+modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:[2m42655:16[22m[39m
+[90m [2mΓ¥»[22m normalizeUrl ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Climate/node_modules/vite/dis
+t/node/chunks/dep-Dm0c1Wj2.js:[2m40634:23[22m[39m
+[90m [2mΓ¥»[22m ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Climate/node_modules/vite/dist/node/chunks
+/dep-Dm0c1Wj2.js:[2m40753:37[22m[39m
+[90m [2mΓ¥»[22m TransformPluginContext.transform ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Climate/n
+ode_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:[2m40680:7[22m[39m
+[90m [2mΓ¥»[22m EnvironmentPluginContainer.transform ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Clima
+te/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:[2m42453:18[22m[39m
+[90m [2mΓ¥»[22m loadAndTransform ../../../../../Kavita%20Dixit/.gemini/antigravity/scratch/Climate/node_modules/vite
+/dist/node/chunks/dep-Dm0c1Wj2.js:[2m35845:27[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/43]ΓÄ»[22m[39m
+
+
+[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m[1m[41m Failed Tests 42 [49m[22m[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m
+
+[41m[1m FAIL [22m[49m tests/integration/data-persistence.test.js[2m > [22mdata persistence[2m > [22mstate 
+persists to localStorage
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/integration/data-persistence.test.js:[2m37:11[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/data-persistence.test.js[2m > [22mdata persistence[2m > [22mstate 
+loads from localStorage on init
+[31m[1mTypeError[22m: Cannot read properties of undefined (reading 'id')[39m
+[36m [2mΓ¥»[22m tests/integration/data-persistence.test.js:[2m60:32[22m[39m
+    [90m 58| [39m    [35mconst[39m state [33m=[39m store[33m.[39m[34mgetState[39m()[33m;[39m
+    [90m 59| [39m
+    [90m 60| [39m    [34mexpect[39m(state[33m.[39mactivities[[34m0[39m][33m.[39mid)[33m.[39m[34mtoBe[39m(
+[32m'seed'[39m)[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 61| [39m    
+[34mexpect[39m(state[33m.[39msettings[33m.[39mtheme)[33m.[39m[34mtoBe[39m([32m'dark'[39m)[33m;[39m
+    [90m 62| [39m  })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[3/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/data-persistence.test.js[2m > [22mdata persistence[2m > [22mmigration 
+runs on old data format
+[31m[1mAssertionError[22m: expected undefined to be defined[39m
+[36m [2mΓ¥»[22m tests/integration/data-persistence.test.js:[2m81:28[22m[39m
+    [90m 79| [39m    [34mexpect[39m(state)[33m.[39m[34mtoBeDefined[39m()[33m;[39m
+    [90m 80| [39m    [34mexpect[39m([33mArray[39m[33m.[39m[34misArray[39m(state[33m.[39mactivities))[33m.
+[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m 81| [39m    [34mexpect[39m(state[33m.[39msettings)[33m.[39m[34mtoBeDefined[39m()[33m;[39m
+    [90m   | [39m                           [31m^[39m
+    [90m 82| [39m  })[33m;[39m
+    [90m 83| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[4/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/data-persistence.test.js[2m > [22mdata persistence[2m > [22mcorrupted 
+data falls back to defaults
+[31m[1mTypeError[22m: Cannot read properties of undefined (reading 'theme')[39m
+[36m [2mΓ¥»[22m tests/integration/data-persistence.test.js:[2m93:27[22m[39m
+    [90m 91| [39m    [90m// Should fall back to defaults instead of crashing[39m
+    [90m 92| [39m    [34mexpect[39m(state[33m.[39mactivities)[33m.[39m[34mtoEqual[39m([])[33m;[39m
+    [90m 93| [39m    
+[34mexpect[39m(state[33m.[39msettings[33m.[39mtheme)[33m.[39m[34mtoBe[39m([32m'light'[39m)[33m;[39m
+    [90m   | [39m                          [31m^[39m
+    [90m 94| [39m  })[33m;[39m
+    [90m 95| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[5/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/data-persistence.test.js[2m > [22mdata persistence[2m > [22mhandles 
+storage quota error gracefully
+[31m[1mAssertionError[22m: expected [Function] to not throw an error but 'TypeError: [Store] setState requires ΓÇª' 
+was thrown[39m
+
+[32m- Expected:[39m 
+undefined
+
+[31m+ Received:[39m 
+"TypeError: [Store] setState requires a function argument"
+
+[36m [2mΓ¥»[22m tests/integration/data-persistence.test.js:[2m123:12[22m[39m
+    [90m121| [39m    [34mexpect[39m(() [33m=>[39m {
+    [90m122| [39m      store[33m.[39m[34msetState[39m({ activities[33m:[39m [{ id[33m:[39m [32m'q1'[39m }] 
+})[33m;[39m
+    [90m123| [39m    })[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   | [39m           [31m^[39m
+    [90m124| [39m
+    [90m125| [39m    [90m// State should still be updated in memory[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[6/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/data-persistence.test.js[2m > [22mdata persistence[2m > [22mchanges 
+from one store instance are visible to a newly created store
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/integration/data-persistence.test.js:[2m136:12[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[7/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/user-flow.test.js[2m > [22mUser flow integration[2m > [22muser logs an 
+activity ΓåÆ appears in store ΓåÆ totals update
+[31m[1mError[22m: No emission factor found for path "transport.car"[39m
+[36m [2mΓ¥»[22m calculateActivityEmission src/core/calculator.js:[2m123:11[22m[39m
+    [90m121| [39m  [35mif[39m ([33m![39mfactorEntry) {
+    [90m122| [39m    [35mconst[39m path [33m=[39m [category[33m,[39m type[33m,[39m 
+subtype][33m.[39m[34mfilter[39m([33mBoolean[39m)[33m.[39m[34mjoin[39m([32m'.'[39m)[33m;[39m
+    [90m123| [39m    [35mthrow[39m [35mnew[39m [33mError[39m([32m`No emission factor found for path 
+"[39m[36m${[39mpath[36m}[39m[32m"`[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m124| [39m  }
+    [90m125| [39m
+[90m [2mΓ¥»[22m tests/integration/user-flow.test.js:[2m54:47[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[8/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/user-flow.test.js[2m > [22mUser flow integration[2m > [22muser creates 
+a goal ΓåÆ progress tracked against logged activities
+[31m[1mError[22m: No emission factor found for path "transport.car"[39m
+[36m [2mΓ¥»[22m calculateActivityEmission src/core/calculator.js:[2m123:11[22m[39m
+    [90m121| [39m  [35mif[39m ([33m![39mfactorEntry) {
+    [90m122| [39m    [35mconst[39m path [33m=[39m [category[33m,[39m type[33m,[39m 
+subtype][33m.[39m[34mfilter[39m([33mBoolean[39m)[33m.[39m[34mjoin[39m([32m'.'[39m)[33m;[39m
+    [90m123| [39m    [35mthrow[39m [35mnew[39m [33mError[39m([32m`No emission factor found for path 
+"[39m[36m${[39mpath[36m}[39m[32m"`[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m124| [39m  }
+    [90m125| [39m
+[90m [2mΓ¥»[22m tests/integration/user-flow.test.js:[2m75:50[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[9/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/user-flow.test.js[2m > [22mUser flow integration[2m > [22muser logs 
+multiple activities ΓåÆ category breakdown is correct
+[31m[1mError[22m: No emission factor found for path "transport.car"[39m
+[36m [2mΓ¥»[22m calculateActivityEmission src/core/calculator.js:[2m123:11[22m[39m
+    [90m121| [39m  [35mif[39m ([33m![39mfactorEntry) {
+    [90m122| [39m    [35mconst[39m path [33m=[39m [category[33m,[39m type[33m,[39m 
+subtype][33m.[39m[34mfilter[39m([33mBoolean[39m)[33m.[39m[34mjoin[39m([32m'.'[39m)[33m;[39m
+    [90m123| [39m    [35mthrow[39m [35mnew[39m [33mError[39m([32m`No emission factor found for path 
+"[39m[36m${[39mpath[36m}[39m[32m"`[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m124| [39m  }
+    [90m125| [39m
+[90m [2mΓ¥»[22m tests/integration/user-flow.test.js:[2m99:44[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[10/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/user-flow.test.js[2m > [22mUser flow integration[2m > [22muser deletes 
+an activity ΓåÆ totals update correctly
+[31m[1mError[22m: No emission factor found for path "transport.car"[39m
+[36m [2mΓ¥»[22m calculateActivityEmission src/core/calculator.js:[2m123:11[22m[39m
+    [90m121| [39m  [35mif[39m ([33m![39mfactorEntry) {
+    [90m122| [39m    [35mconst[39m path [33m=[39m [category[33m,[39m type[33m,[39m 
+subtype][33m.[39m[34mfilter[39m([33mBoolean[39m)[33m.[39m[34mjoin[39m([32m'.'[39m)[33m;[39m
+    [90m123| [39m    [35mthrow[39m [35mnew[39m [33mError[39m([32m`No emission factor found for path 
+"[39m[36m${[39mpath[36m}[39m[32m"`[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m124| [39m  }
+    [90m125| [39m
+[90m [2mΓ¥»[22m tests/integration/user-flow.test.js:[2m120:44[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[11/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/user-flow.test.js[2m > [22mUser flow integration[2m > [22mactivities 
+persist across store re-creation (via storage)
+[31m[1mError[22m: No emission factor found for path "transport.car"[39m
+[36m [2mΓ¥»[22m calculateActivityEmission src/core/calculator.js:[2m123:11[22m[39m
+    [90m121| [39m  [35mif[39m ([33m![39mfactorEntry) {
+    [90m122| [39m    [35mconst[39m path [33m=[39m [category[33m,[39m type[33m,[39m 
+subtype][33m.[39m[34mfilter[39m([33mBoolean[39m)[33m.[39m[34mjoin[39m([32m'.'[39m)[33m;[39m
+    [90m123| [39m    [35mthrow[39m [35mnew[39m [33mError[39m([32m`No emission factor found for path 
+"[39m[36m${[39mpath[36m}[39m[32m"`[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m124| [39m  }
+    [90m125| [39m
+[90m [2mΓ¥»[22m tests/integration/user-flow.test.js:[2m142:50[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[12/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mreturns an array of insight objects
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m50:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[13/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "id" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "title" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "description" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "category" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "impactLevel" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "easeLevel" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "potentialSavingKg" field
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mevery insight has the required "actionSteps" field
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m58:42[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[14/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mimpactLevel is always one of high / medium / low
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m66:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[15/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22measeLevel is always one of easy / moderate / hard
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m73:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[16/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mpotentialSavingKg is a non-negative number
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m80:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[17/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mactionSteps is a non-empty array of strings
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m88:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[18/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22minsights are relevant to the user's top emission categories
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m100:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[19/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22mreturns empty array when breakdown is empty
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m109:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[20/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > [22mgenerateInsights()[2m > 
+[22meach insight has a unique id
+[31m[1mTypeError[22m: activities must be an array[39m
+[36m [2mΓ¥»[22m generateInsights src/core/insights.js:[2m535:11[22m[39m
+    [90m533| [39m[35mexport[39m [35mfunction[39m [34mgenerateInsights[39m(activities[33m,[39m goals) {
+    [90m534| [39m  [35mif[39m ([33m![39m[33mArray[39m[33m.[39m[34misArray[39m(activities)) {
+    [90m535| [39m    [35mthrow[39m [35mnew[39m [33mTypeError[39m([32m'activities must be an 
+array'[39m)[33m;[39m
+    [90m   | [39m          [31m^[39m
+    [90m536| [39m  }
+    [90m537| [39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m115:40[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[21/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > 
+[22mgetTopEmissionCategories()[2m > [22mreturns categories sorted by emission value (desc)
+[31m[1mTypeError[22m: actual value must be number or bigint, received "undefined"[39m
+[36m [2mΓ¥»[22m tests/unit/insights.test.js:[2m129:45[22m[39m
+    [90m127| [39m
+    [90m128| [39m      [35mfor[39m ([35mlet[39m i [33m=[39m [34m0[39m[33m;[39m i [33m<[39m 
+result[33m.[39mlength [33m-[39m [34m1[39m[33m;[39m i[33m++[39m) {
+    [90m129| [39m        
+[34mexpect[39m([33mSAMPLE_BREAKDOWN[39m[result[i]])[33m.[39m[34mtoBeGreaterThanOrEqual[39m(
+    [90m   | [39m                                            [31m^[39m
+    [90m130| [39m          [33mSAMPLE_BREAKDOWN[39m[result[i [33m+[39m [34m1[39m]][33m,[39m
+    [90m131| [39m        )[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[22/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > 
+[22mgetTopEmissionCategories()[2m > [22mfirst element is the highest-emission category
+[31m[1mAssertionError[22m: expected { category: 'transport', ΓÇª(2) } to be 'transport' // Object.is equality[39m
+
+[32m- Expected:[39m 
+"transport"
+
+[31m+ Received:[39m 
+{
+  "category": "transport",
+  "percentage": undefined,
+  "total": undefined,
+}
+
+[36m [2mΓ¥»[22m tests/unit/insights.test.js:[2m147:25[22m[39m
+    [90m145| [39m    [34mit[39m([32m'first element is the highest-emission category'[39m[33m,[39m () 
+[33m=>[39m {
+    [90m146| [39m      [35mconst[39m result [33m=[39m 
+[34mgetTopEmissionCategories[39m([33mSAMPLE_BREAKDOWN[39m)[33m;[39m
+    [90m147| [39m      
+[34mexpect[39m(result[[34m0[39m])[33m.[39m[34mtoBe[39m([32m'transport'[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m148| [39m    })[33m;[39m
+    [90m149| [39m  })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[23/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > 
+[22mgetReductionSuggestions()[2m > [22mreturns suggestions for a valid category
+[31m[1mError[22m: Unknown category "transport". Valid categories: transportation, energy, diet, shopping, waste[39m
+[36m [2mΓ¥»[22m getReductionSuggestions src/core/insights.js:[2m454:11[22m[39m
+    [90m452| [39m
+    [90m453| [39m  [35mif[39m ([33m![39m[33mCATEGORIES[39m[33m.[39m[34mincludes[39m(normalised)) {
+    [90m454| [39m    [35mthrow[39m [35mnew[39m [33mError[39m(
+    [90m   | [39m          [31m^[39m
+    [90m455| [39m      `Unknown category "${normalised}". Valid categories: ${CATEGORIEΓÇª
+    [90m456| [39m    )[33m;[39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m154:50[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[24/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > 
+[22mgetReductionSuggestions()[2m > [22meach suggestion is a non-empty string
+[31m[1mError[22m: Unknown category "food". Valid categories: transportation, energy, diet, shopping, waste[39m
+[36m [2mΓ¥»[22m getReductionSuggestions src/core/insights.js:[2m454:11[22m[39m
+    [90m452| [39m
+    [90m453| [39m  [35mif[39m ([33m![39m[33mCATEGORIES[39m[33m.[39m[34mincludes[39m(normalised)) {
+    [90m454| [39m    [35mthrow[39m [35mnew[39m [33mError[39m(
+    [90m   | [39m          [31m^[39m
+    [90m455| [39m      `Unknown category "${normalised}". Valid categories: ${CATEGORIEΓÇª
+    [90m456| [39m    )[33m;[39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m160:50[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[25/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/insights.test.js[2m > [22minsights module[2m > 
+[22mgetReductionSuggestions()[2m > [22mreturns empty array for an unknown category
+[31m[1mError[22m: Unknown category "nonexistent". Valid categories: transportation, energy, diet, shopping, 
+waste[39m
+[36m [2mΓ¥»[22m getReductionSuggestions src/core/insights.js:[2m454:11[22m[39m
+    [90m452| [39m
+    [90m453| [39m  [35mif[39m ([33m![39m[33mCATEGORIES[39m[33m.[39m[34mincludes[39m(normalised)) {
+    [90m454| [39m    [35mthrow[39m [35mnew[39m [33mError[39m(
+    [90m   | [39m          [31m^[39m
+    [90m455| [39m      `Unknown category "${normalised}". Valid categories: ${CATEGORIEΓÇª
+    [90m456| [39m    )[33m;[39m
+[90m [2mΓ¥»[22m tests/unit/insights.test.js:[2m168:50[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[26/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22mcreateStore()[2m > 
+[22minitializes with the provided default state
+[31m[1mTypeError[22m: Cannot read properties of undefined (reading 'theme')[39m
+[36m [2mΓ¥»[22m tests/unit/store.test.js:[2m41:29[22m[39m
+    [90m 39| [39m      [34mexpect[39m(state[33m.[39mactivities)[33m.[39m[34mtoEqual[39m([])[33m;[39m
+    [90m 40| [39m      [34mexpect[39m(state[33m.[39mgoals)[33m.[39m[34mtoEqual[39m([])[33m;[39m
+    [90m 41| [39m      
+[34mexpect[39m(state[33m.[39msettings[33m.[39mtheme)[33m.[39m[34mtoBe[39m([32m'light'[39m)[33m;[39m
+    [90m   | [39m                            [31m^[39m
+    [90m 42| [39m    })[33m;[39m
+    [90m 43| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[27/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22mgetState()[2m > [22mreturns a 
+deep clone ΓÇö mutations do not affect the store
+[31m[1mTypeError[22m: Cannot set properties of undefined (setting 'theme')[39m
+[36m [2mΓ¥»[22m tests/unit/store.test.js:[2m57:28[22m[39m
+    [90m 55| [39m      [35mconst[39m state [33m=[39m store[33m.[39m[34mgetState[39m()[33m;[39m
+    [90m 56| [39m      state[33m.[39mactivities[33m.[39m[34mpush[39m({ id[33m:[39m [32m'rogue'[39m 
+})[33m;[39m
+    [90m 57| [39m      state[33m.[39msettings[33m.[39mtheme [33m=[39m [32m'dark'[39m[33m;[39m
+    [90m   | [39m                           [31m^[39m
+    [90m 58| [39m
+    [90m 59| [39m      [35mconst[39m fresh [33m=[39m store[33m.[39m[34mgetState[39m()[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[28/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22msetState()[2m > [22mupdates 
+state correctly with a partial update
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+
+[2m Test Files [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m7 passed[39m[22m[90m (12)[39m
+[2m      Tests [22m [1m[31m42 failed[39m[22m[2m | [22m[1m[32m181 passed[39m[22m[90m (223)[39m
+[2m   Start at [22m 12:51:28
+[2m   Duration [22m 7.02s[2m (transform 149ms, setup 2.21s, collect 1.54s, tests 207ms, environment 6.03s, prepare 3.66s)[22m
+
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m68:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[29/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22msetState()[2m > [22mmerges 
+instead of replacing the whole state
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m75:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[30/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22msetState()[2m > [22mnotifies 
+subscribers on update
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m86:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[31/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22msubscribe()[2m > [22mstops 
+notifying after unsubscribe
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m105:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[32/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22msubscribe()[2m > [22msupports 
+multiple subscribers
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m119:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[33/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22mreset()[2m > [22mrestores the 
+default state
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m128:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[34/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22mpersistence[2m > [22msaves 
+state to localStorage on setState
+[31m[1mTypeError[22m: [Store] setState requires a function argument[39m
+[36m [2mΓ¥»[22m Store.setState src/store/store.js:[2m154:13[22m[39m
+    [90m152| [39m  [34msetState[39m(updater) {
+    [90m153| [39m    [35mif[39m ([35mtypeof[39m updater [33m!==[39m [32m'function'[39m) {
+    [90m154| [39m      throw new TypeError('[Store] setState requires a function argumeΓÇª
+    [90m   | [39m            [31m^[39m
+    [90m155| [39m    }
+    [90m156| [39m
+[90m [2mΓ¥»[22m tests/unit/store.test.js:[2m148:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[35/43]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m tests/unit/store.test.js[2m > [22mstore module[2m > [22mpersistence[2m > [22mloads 
+state from localStorage on creation
+[31m[1mAssertionError[22m: expected [] to deeply equal [ { id: 'seed' } ][39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- [[39m
+[32m-   {[39m
+[32m-     "id": "seed",[39m
+[32m-   },[39m
+[32m- ][39m
+[31m+ [][39m
+
+[36m [2mΓ¥»[22m tests/unit/store.test.js:[2m169:32[22m[39m
+    [90m167| [39m      [35mconst[39m state [33m=[39m newStore[33m.[39m[34mgetState[39m()[33m;[39m
+    [90m168| [39m
+    [90m169| [39m      [34mexpect[39m(state[33m.[39mactivities)[33m.[39m[34mtoEqual[39m([{ id[33m:[39m 
+[32m'seed'[39m }])[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m170| [39m      
+[34mexpect[39m(state[33m.[39msettings[33m.[39mtheme)[33m.[39m[34mtoBe[39m([32m'dark'[39m)[33m;[39m
+    [90m171| [39m    })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[36/43]ΓÄ»[22m[39m
+

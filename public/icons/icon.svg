@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0a0f1a"/>
+      <stop offset="100%" stop-color="#131b2e"/>
+    </linearGradient>
+    <linearGradient id="leaf-grad" x1="160" y1="120" x2="380" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+  <!-- Circle background -->
+  <circle cx="256" cy="256" r="240" fill="url(#bg-grad)" stroke="#22c55e" stroke-width="8" opacity="0.9"/>
+  <!-- Leaf shape -->
+  <path d="M256 120 C160 160, 120 280, 256 392 C392 280, 352 160, 256 120Z" fill="url(#leaf-grad)" opacity="0.95"/>
+  <!-- Central vein -->
+  <path d="M256 160 L256 340" stroke="#0a0f1a" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  <!-- Side veins -->
+  <path d="M256 210 L210 185" stroke="#0a0f1a" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  <path d="M256 210 L302 185" stroke="#0a0f1a" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  <path d="M256 260 L195 230" stroke="#0a0f1a" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  <path d="M256 260 L317 230" stroke="#0a0f1a" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  <path d="M256 310 L210 285" stroke="#0a0f1a" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  <path d="M256 310 L302 285" stroke="#0a0f1a" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+</svg>
