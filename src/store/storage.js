@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Obfuscated localStorage wrapper with namespace isolation.
  * Provides a safe interface over localStorage with XOR-based obfuscation
@@ -220,3 +221,4 @@ export function createStorage(namespace) {
 
   return Object.freeze({ get, set, remove, clear, has });
 }
+

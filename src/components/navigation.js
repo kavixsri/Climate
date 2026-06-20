@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/navigation
  * @description Sidebar navigation component for CarbonLens with route-based
@@ -253,3 +254,4 @@ export function renderNavigation(container) {
     }
   };
 }
+

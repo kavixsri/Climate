@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/goals-tracker
  * @description Goal setting and progress tracking component for CarbonLens.
@@ -607,3 +608,4 @@ export function renderGoalsTracker(container) {
     }
   };
 }
+

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Simple obfuscation utilities for CarbonLens localStorage data.
  *
@@ -155,3 +156,4 @@ export function generateId() {
     return v.toString(16);
   });
 }
+

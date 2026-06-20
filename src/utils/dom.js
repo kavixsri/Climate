@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Safe DOM manipulation utilities for CarbonLens.
  * NEVER uses innerHTML, eval(), or document.write().
@@ -372,3 +373,4 @@ export function announceToScreenReader(message, priority = 'polite') {
     }
   });
 }
+

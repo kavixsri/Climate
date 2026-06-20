@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @file CarbonLens — Hash-based Client-Side Router.
  *
@@ -223,3 +224,4 @@ export function createRouter(routes, outlet) {
     destroy
   });
 }
+

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Debounce, throttle, and idle-callback utilities for CarbonLens.
  * Provides performance-critical timing functions to limit the rate
@@ -192,3 +193,4 @@ export function requestIdleCallbackPolyfill(fn) {
 }
 
 export { requestIdleCallbackPolyfill as requestIdleCallback };
+

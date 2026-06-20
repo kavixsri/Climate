@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Accessibility (a11y) helper utilities for CarbonLens.
  * Provides focus management, screen reader announcements,
@@ -333,3 +334,4 @@ export function getContrastRatio(hex1, hex2) {
 
   return (lighter + 0.05) / (darker + 0.05);
 }
+

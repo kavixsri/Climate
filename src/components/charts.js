@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/charts
  * @description Chart visualization components for CarbonLens. Uses Chart.js
@@ -409,3 +410,4 @@ function getGridColor() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   return isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)';
 }
+

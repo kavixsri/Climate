@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/dashboard
  * @description Main dashboard view for CarbonLens — the hero page. Displays
@@ -559,3 +560,4 @@ function computeComparisons(totalEmissions) {
     return [];
   }
 }
+

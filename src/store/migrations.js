@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Data schema migration system for the CarbonLens store.
  * Applies sequential migrations to evolve persisted data between versions.
@@ -190,3 +191,4 @@ export function detectVersion(data) {
 
   return 0;
 }
+

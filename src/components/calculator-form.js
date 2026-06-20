@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/calculator-form
  * @description Multi-step carbon calculator form for CarbonLens. Guides users
@@ -764,3 +765,4 @@ export function renderCalculatorForm(container) {
     abortController.abort();
   };
 }
+

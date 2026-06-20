@@ -150,12 +150,14 @@ class Store {
    * }));
    */
   setState(updater) {
-    if (typeof updater !== 'function') {
-      throw new TypeError('[Store] setState requires a function argument');
-    }
-
     const prevState = deepClone(this.#state);
-    const nextState = updater(prevState);
+    let nextState;
+
+    if (typeof updater === 'function') {
+      nextState = updater(prevState);
+    } else {
+      nextState = { ...prevState, ...updater };
+    }
 
     if (nextState === null || typeof nextState !== 'object' || Array.isArray(nextState)) {
       throw new TypeError('[Store] setState updater must return a plain object');

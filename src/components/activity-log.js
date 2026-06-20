@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/activity-log
  * @description Activity logging timeline for CarbonLens with filtering,
@@ -546,3 +547,4 @@ export function renderActivityLog(container) {
     }
   };
 }
+

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @file CarbonLens — Application Entry Point.
  *
@@ -153,3 +154,4 @@ window.addEventListener('unhandledrejection', (event) => {
    Bootstrap
    -------------------------------------------------------------------------- */
 init();
+

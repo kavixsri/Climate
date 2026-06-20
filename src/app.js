@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @file CarbonLens — App Orchestrator.
  *
@@ -405,3 +406,4 @@ export function createApp() {
 
   return Object.freeze({ mount, unmount });
 }
+

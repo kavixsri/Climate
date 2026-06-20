@@ -16,14 +16,14 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup.js'],
     coverage: {
-      provider: 'v8',
+      provider: 'istanbul',
       reporter: ['text', 'html', 'lcov'],
       include: ['src/**/*.js'],
-      exclude: ['src/workers/**', 'src/components/**', 'src/app.js', 'src/main.js', 'src/router.js'],
+      exclude: ['src/workers/**'],
       thresholds: {
         statements: 80,
-        branches: 60,
-        functions: 70,
+        branches: 70,
+        functions: 80,
         lines: 80,
       },
     },

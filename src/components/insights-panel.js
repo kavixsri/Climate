@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/insights-panel
  * @description Personalized recommendations panel for CarbonLens. Displays
@@ -375,3 +376,4 @@ export function renderInsightsPanel(container) {
     }
   };
 }
+

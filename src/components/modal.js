@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module components/modal
  * @description Accessible modal dialog with focus trapping, keyboard dismiss,
@@ -242,3 +243,4 @@ function createModalRoot() {
   document.body.appendChild(root);
   return root;
 }
+

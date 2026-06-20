@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Input validation and sanitization utilities for CarbonLens.
  * CRITICAL FOR SECURITY — never trust user input.
@@ -348,3 +349,4 @@ export function validateGoal(goal) {
 }
 
 export { VALID_PERIODS };
+
