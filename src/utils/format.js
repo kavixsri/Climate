@@ -2,7 +2,6 @@
  * Formatting utilities for CarbonLens.
  * Provides locale-aware formatting for CO2 values, numbers, dates,
  * percentages, and trend indicators.
- *
  * @module format
  */
 
@@ -15,10 +14,8 @@ const TONS_THRESHOLD = 1000;
 
 /**
  * Formats a CO2 value in kilograms, auto-scaling to tons when appropriate.
- *
  * @param {number} kgValue - The CO2 value in kilograms.
  * @returns {string} Formatted string, e.g., '1.2 kg' or '1.2 tons'.
- *
  * @example
  * formatCO2(0.5);    // '0.50 kg'
  * formatCO2(1234);   // '1.23 tons'
@@ -38,11 +35,9 @@ export function formatCO2(kgValue) {
 
 /**
  * Formats a number with locale-aware formatting and fixed decimal places.
- *
  * @param {number} value - The number to format.
- * @param {number} [decimals=2] - Number of decimal places.
+ * @param {number} [decimals] - Number of decimal places.
  * @returns {string} Locale-formatted number string.
- *
  * @example
  * formatNumber(1234.5678, 2); // '1,234.57' (en-US)
  * formatNumber(0.1, 1);       // '0.1'
@@ -66,10 +61,8 @@ export function formatNumber(value, decimals = 2) {
 
 /**
  * Formats an ISO date string to a locale-aware display date.
- *
  * @param {string} dateString - ISO 8601 date string (e.g., '2024-03-15').
  * @returns {string} Locale-formatted date, or 'Invalid date' on error.
- *
  * @example
  * formatDate('2024-03-15'); // 'Mar 15, 2024' (en-US) or locale equivalent
  */
@@ -98,10 +91,8 @@ export function formatDate(dateString) {
  * Formats a date as a relative human-readable string.
  * Returns 'today', 'yesterday', or 'N days ago' for recent dates,
  * falling back to locale-aware absolute date for older ones.
- *
  * @param {string} dateString - ISO 8601 date string.
  * @returns {string} Relative date string.
- *
  * @example
  * formatRelativeDate('2024-03-15'); // 'today' (if today is March 15)
  * formatRelativeDate('2024-03-14'); // 'yesterday'
@@ -152,11 +143,9 @@ export function formatRelativeDate(dateString) {
 
 /**
  * Formats a numeric value as a percentage string.
- *
  * @param {number} value - The value to format (0-100 scale, or 0-1 scale auto-detected).
- * @param {number} [decimals=1] - Number of decimal places.
+ * @param {number} [decimals] - Number of decimal places.
  * @returns {string} Formatted percentage, e.g., '45.2%'.
- *
  * @example
  * formatPercentage(45.23);   // '45.2%'
  * formatPercentage(0.452);   // '45.2%' (auto-detected 0-1 scale)
@@ -181,10 +170,8 @@ export function formatPercentage(value, decimals = 1) {
  * Formats a numeric trend value with a directional indicator.
  * Positive values show an up arrow, negative values a down arrow.
  * Zero shows a horizontal dash.
- *
  * @param {number} value - The trend percentage value.
  * @returns {string} Formatted trend, e.g., '↑ 12.3%' or '↓ 5.1%'.
- *
  * @example
  * formatTrend(12.34);  // '↑ 12.3%'
  * formatTrend(-5.1);   // '↓ 5.1%'
@@ -204,10 +191,8 @@ export function formatTrend(value) {
 
 /**
  * Capitalizes the first letter of a string.
- *
  * @param {string} str - The string to capitalize.
  * @returns {string} The capitalized string, or empty string if input is invalid.
- *
  * @example
  * capitalize('hello');   // 'Hello'
  * capitalize('WORLD');   // 'WORLD'

@@ -1,10 +1,9 @@
 /**
- * @fileoverview CarbonLens — App Orchestrator.
+ * @file CarbonLens — App Orchestrator.
  *
  * Creates the app shell: sidebar navigation, main content area,
  * router initialization, store subscription, and theme management.
  * Uses only DOM API methods — never innerHTML.
- *
  * @module app
  */
 
@@ -19,6 +18,10 @@ import { renderAchievements } from './components/achievements.js';
 /* --------------------------------------------------------------------------
    View Wrapper
    -------------------------------------------------------------------------- */
+/**
+ *
+ * @param renderFn
+ */
 function wrapView(renderFn) {
   return async (container) => {
     try {
@@ -100,7 +103,6 @@ const NAV_ITEMS = [
 
 /**
  * Build the sidebar navigation DOM.
- *
  * @param {(path: string) => void} onNavigate - Callback when a nav item is clicked
  * @returns {{ element: HTMLElement, setActive: (path: string) => void, destroy: () => void }}
  */
@@ -235,6 +237,9 @@ function createNavigation(onNavigate) {
     }
   }
 
+  /**
+   *
+   */
   function destroy() {
     navItemMap.clear();
   }
@@ -288,9 +293,7 @@ function createMobileHeader(navElement) {
 
 /**
  * Create the CarbonLens application instance.
- *
  * @returns {{ mount: (container: HTMLElement) => void, unmount: () => void }}
- *
  * @example
  * const app = createApp();
  * app.mount(document.getElementById('app'));

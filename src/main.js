@@ -1,10 +1,9 @@
 /**
- * @fileoverview CarbonLens — Application Entry Point.
+ * @file CarbonLens — Application Entry Point.
  *
  * Bootstraps the app by initializing storage, creating the store,
  * mounting the application, registering the service worker, and
  * setting up global error handlers.
- *
  * @module main
  */
 

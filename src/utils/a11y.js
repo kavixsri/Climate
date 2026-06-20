@@ -2,7 +2,6 @@
  * Accessibility (a11y) helper utilities for CarbonLens.
  * Provides focus management, screen reader announcements,
  * keyboard navigation, and WCAG compliance helpers.
- *
  * @module a11y
  */
 
@@ -26,11 +25,9 @@ const FOCUSABLE_SELECTOR = [
  * When the user presses Tab or Shift+Tab at the edges of the container,
  * focus wraps around rather than leaving the container. Essential for
  * modal dialogs and dropdown menus.
- *
  * @param {HTMLElement} element - The container to trap focus within.
  * @returns {Function} Cleanup function that removes the focus trap.
  * @throws {TypeError} If element is not a valid DOM element.
- *
  * @example
  * const modal = document.getElementById('modal');
  * const releaseTrap = trapFocus(modal);
@@ -94,12 +91,10 @@ export function trapFocus(element) {
  * Updates or creates an aria-live region to announce a message to screen readers.
  * If the element already has aria-live, its content is updated. Otherwise,
  * the aria-live attribute is set before updating content.
- *
  * @param {HTMLElement} element - The aria-live region element.
  * @param {string} message - The message to announce.
- * @param {'polite'|'assertive'} [priority='polite'] - The announcement priority.
+ * @param {'polite'|'assertive'} [priority] - The announcement priority.
  * @throws {TypeError} If element is not a DOM element or message is not a string.
- *
  * @example
  * const statusRegion = document.getElementById('status');
  * setAriaLive(statusRegion, 'Form submitted successfully', 'polite');
@@ -125,7 +120,7 @@ export function setAriaLive(element, message, priority = 'polite') {
 }
 
 /**
- * @typedef {Object} KeyboardActions
+ * @typedef {object} KeyboardActions
  * @property {Function} [Enter] - Handler for Enter key.
  * @property {Function} [Escape] - Handler for Escape key.
  * @property {Function} [ArrowUp] - Handler for ArrowUp key.
@@ -142,11 +137,9 @@ export function setAriaLive(element, message, priority = 'polite') {
  * Maps keyboard events to action handlers.
  * Calls the matching action function based on the pressed key.
  * Prevents default behavior only when a matching handler is found.
- *
  * @param {KeyboardEvent} event - The keyboard event.
  * @param {KeyboardActions} actions - Object mapping key names to handler functions.
  * @throws {TypeError} If event is not a KeyboardEvent or actions is not an object.
- *
  * @example
  * element.addEventListener('keydown', (event) => {
  *   handleKeyboardNav(event, {
@@ -177,7 +170,6 @@ export function handleKeyboardNav(event, actions) {
  * Moves focus to the main content area of the page.
  * Looks for an element with id="main-content", role="main", or the <main> tag.
  * Sets tabIndex=-1 if necessary to make non-interactive elements focusable.
- *
  * @example
  * // In a "Skip to main content" link handler:
  * skipLink.addEventListener('click', (e) => {
@@ -213,9 +205,7 @@ let routeAnnouncer = null;
 /**
  * Announces a route/page change to screen readers.
  * Creates a dedicated aria-live region for navigation announcements.
- *
  * @param {string} pageName - The name of the page being navigated to.
- *
  * @example
  * // In router navigation handler:
  * announceRouteChange('Dashboard');
@@ -260,9 +250,7 @@ export function announceRouteChange(pageName) {
  * Checks whether the user prefers reduced motion.
  * Respects the prefers-reduced-motion CSS media query, which is set
  * by users who experience motion sickness or vestibular disorders.
- *
  * @returns {boolean} True if the user prefers reduced motion.
- *
  * @example
  * if (prefersReducedMotion()) {
  *   element.style.transition = 'none';
@@ -282,7 +270,6 @@ export function prefersReducedMotion() {
 /**
  * Converts a hex color string to its sRGB luminance value.
  * Uses the WCAG 2.1 relative luminance formula.
- *
  * @param {string} hex - Hex color string (e.g., '#ffffff' or '#fff').
  * @returns {number} Relative luminance (0 = black, 1 = white).
  * @private
@@ -324,12 +311,10 @@ function getLuminance(hex) {
  * WCAG AAA requires:
  * - 7:1 for normal text
  * - 4.5:1 for large text
- *
  * @param {string} hex1 - First hex color (e.g., '#000000').
  * @param {string} hex2 - Second hex color (e.g., '#ffffff').
  * @returns {number} The contrast ratio (e.g., 21 for black/white).
  * @throws {Error} If either color is not a valid hex string.
- *
  * @example
  * getContrastRatio('#000000', '#ffffff'); // 21
  * getContrastRatio('#767676', '#ffffff'); // ~4.54 (passes AA)

@@ -4,7 +4,6 @@
  * Compares a user's annual emissions against national and global averages,
  * estimates their global percentile, and converts abstract kg CO₂e numbers
  * into tangible real-world equivalents.
- *
  * @module comparisons
  */
 
@@ -45,7 +44,7 @@ const NEAR_THRESHOLD = 0.10; // ±10 %
  */
 
 /**
- * @typedef {Object} Comparison
+ * @typedef {object} Comparison
  * @property {string}           region      - Region key (e.g. 'us', 'global').
  * @property {string}           regionLabel - Human-readable region name.
  * @property {number}           average     - Regional average in tonnes CO₂e/year.
@@ -56,7 +55,7 @@ const NEAR_THRESHOLD = 0.10; // ±10 %
  */
 
 /**
- * @typedef {Object} Equivalents
+ * @typedef {object} Equivalents
  * @property {number} treesNeeded        - Trees needed to offset annual emissions.
  * @property {number} flightsEquivalent  - Equivalent transatlantic flights.
  * @property {number} drivingKm          - Equivalent km driven in a gasoline car.
@@ -69,12 +68,10 @@ const NEAR_THRESHOLD = 0.10; // ±10 %
 
 /**
  * Compares the user's annual emissions against all regions in {@link AVERAGES}.
- *
  * @param {number} annualEmissionsKg - User's total annual emissions in **kg** CO₂e.
  * @returns {Comparison[]} Array of comparison objects, one per region,
  *   sorted by the magnitude of the difference (largest first).
  * @throws {Error} If `annualEmissionsKg` is not a non-negative finite number.
- *
  * @example
  * const comparisons = compareToAverages(8500);
  * // [{ region: 'india', average: 1.9, userValue: 8.5, difference: 6.6, … }, …]
@@ -137,12 +134,10 @@ export function compareToAverages(annualEmissionsKg) {
  *
  * A percentile of 80 means "your emissions are higher than ~80 % of
  * the world population".
- *
  * @param {number} annualEmissionsKg - User's total annual emissions in **kg** CO₂e.
  * @returns {{ percentile: number, interpretation: string }}
  *   The estimated percentile (0-100) and a human-readable interpretation.
  * @throws {Error} If `annualEmissionsKg` is not a non-negative finite number.
- *
  * @example
  * const { percentile, interpretation } = getPercentile(8500);
  * // { percentile: 73, interpretation: 'Your emissions are higher than ~73 % of the world population.' }
@@ -197,11 +192,9 @@ export function getPercentile(annualEmissionsKg) {
 
 /**
  * Formats a single comparison object into a human-readable string.
- *
  * @param {Comparison} comparison - A comparison object from {@link compareToAverages}.
  * @returns {string} A sentence describing the comparison.
  * @throws {TypeError} If comparison is invalid.
- *
  * @example
  * formatComparison(comparisons[0]);
  * // 'Your footprint (8.5 t) is 81 % above the India Average (1.9 t).'
@@ -231,11 +224,9 @@ export function formatComparison(comparison) {
  * - 1 economy transatlantic round-trip ≈ 1,600 kg CO₂e
  * - 1 km of gasoline car driving ≈ 0.21 kg CO₂e
  * - 1 smartphone full charge ≈ 0.008 kg CO₂e
- *
  * @param {number} co2eKg - Amount of CO₂e in **kilograms**.
  * @returns {Equivalents} Object with tangible equivalents.
  * @throws {Error} If `co2eKg` is not a non-negative finite number.
- *
  * @example
  * const eq = getEquivalents(5000);
  * // { treesNeeded: 227, flightsEquivalent: 3.13, drivingKm: 23810, smartphoneCharges: 625000 }
@@ -266,7 +257,6 @@ export function getEquivalents(co2eKg) {
 
 /**
  * Clamps a number between min and max (inclusive).
- *
  * @param {number} value
  * @param {number} min
  * @param {number} max
@@ -280,7 +270,6 @@ function _clamp(value, min, max) {
 /**
  * Approximation of the standard normal CDF using the Abramowitz & Stegun
  * formula (equation 26.2.17). Accurate to ~1.5 × 10⁻⁷.
- *
  * @param {number} z - The z-score.
  * @returns {number} P(Z ≤ z) for the standard normal distribution.
  * @private

@@ -37,7 +37,6 @@ const EASE_BADGES = {
 
 /**
  * Renders the insights panel into the given container.
- *
  * @param {HTMLElement} container - The DOM element to render into.
  * @returns {Function} Cleanup function that removes event listeners and subscriptions.
  */
@@ -198,8 +197,7 @@ export function renderInsightsPanel(container) {
 
   /**
    * Creates a single insight card DOM element.
-   *
-   * @param {Object} insight - The insight data object.
+   * @param {object} insight - The insight data object.
    * @param {string} insight.id - Unique identifier.
    * @param {string} insight.title - Insight title.
    * @param {string} insight.description - Insight description.

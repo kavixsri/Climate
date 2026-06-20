@@ -5,7 +5,6 @@
  * Each migration function transforms data from version N-1 to version N.
  * Migrations are applied in order and must be idempotent-safe (handle
  * already-migrated data without errors).
- *
  * @module migrations
  */
 
@@ -29,7 +28,7 @@ function ensureArray(value) {
 /**
  * Ensures a value is a plain object, returning an empty object if not.
  * @param {*} value - The value to check.
- * @returns {Object} The value if it's a plain object, or an empty object.
+ * @returns {object} The value if it's a plain object, or an empty object.
  * @private
  */
 function ensureObject(value) {
@@ -41,8 +40,7 @@ function ensureObject(value) {
 /**
  * Map of version numbers to migration functions.
  * Each function receives the data object and returns the migrated data.
- *
- * @type {Map<number, function(Object): Object>}
+ * @type {Map<number, function(object): object>}
  */
 export const migrations = new Map();
 
@@ -57,9 +55,8 @@ export const migrations = new Map();
  *
  * Adds schemaVersion field. Normalizes activity entries to include
  * required fields (id, category, type, amount, date).
- *
- * @param {Object} data - The unversioned data to migrate.
- * @returns {Object} Data conforming to v1 schema.
+ * @param {object} data - The unversioned data to migrate.
+ * @returns {object} Data conforming to v1 schema.
  */
 migrations.set(1, (data) => {
   const migrated = { ...data };
@@ -91,8 +88,6 @@ migrations.set(1, (data) => {
       date: typeof a.date === 'string' ? a.date : new Date().toISOString().slice(0, 10),
       notes: typeof a.notes === 'string' ? a.notes : '',
       ...a, // Preserve any extra fields the user may have added
-      // Re-apply guaranteed types on top
-      id: typeof a.id === 'string' ? a.id : `migrated_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
     };
   });
 
@@ -120,18 +115,15 @@ migrations.set(1, (data) => {
  *
  * Migrations are applied in order: fromVersion+1, fromVersion+2, ..., toVersion.
  * If fromVersion >= toVersion, the data is returned unchanged.
- *
- * @param {Object} data - The data to migrate.
+ * @param {object} data - The data to migrate.
  * @param {number} fromVersion - The current version of the data (0 if unversioned).
- * @param {number} [toVersion=CURRENT_VERSION] - The target version.
- * @returns {Object} The migrated data at the target version.
+ * @param {number} [toVersion] - The target version.
+ * @returns {object} The migrated data at the target version.
  * @throws {TypeError} If data is not an object.
  * @throws {RangeError} If toVersion exceeds the highest available migration.
- *
  * @example
  * // Migrate unversioned data to current
  * const migrated = migrateData(oldData, 0);
- *
  * @example
  * // Migrate from v1 to v2 (when v2 exists)
  * const migrated = migrateData(data, 1, 2);
@@ -182,8 +174,7 @@ export function migrateData(data, fromVersion, toVersion = CURRENT_VERSION) {
 /**
  * Detects the schema version of the given data.
  * Returns 0 if no version is found (unversioned data).
- *
- * @param {Object} data - The data to inspect.
+ * @param {object} data - The data to inspect.
  * @returns {number} The detected schema version.
  */
 export function detectVersion(data) {

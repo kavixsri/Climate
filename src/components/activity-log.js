@@ -24,7 +24,6 @@ const CATEGORY_ICONS = {
 
 /**
  * Renders the activity log view into the given container.
- *
  * @param {HTMLElement} container - The DOM element to render into.
  * @returns {Function} Cleanup function that removes all event listeners and subscriptions.
  */
@@ -257,7 +256,7 @@ export function renderActivityLog(container) {
 
   /**
    * Creates a single activity list item DOM element.
-   * @param {Object} activity - The activity data object.
+   * @param {object} activity - The activity data object.
    * @returns {HTMLElement} The list item element.
    */
   function createActivityItem(activity) {
@@ -363,7 +362,7 @@ export function renderActivityLog(container) {
 
   /**
    * Opens an edit modal for an activity with a simplified inline form.
-   * @param {Object} activity - The activity to edit.
+   * @param {object} activity - The activity to edit.
    */
   function handleEdit(activity) {
     const formContent = createElement('div', { className: 'edit-form' });
@@ -462,7 +461,7 @@ export function renderActivityLog(container) {
 
   /**
    * Opens a confirmation dialog before deleting an activity.
-   * @param {Object} activity - The activity to delete.
+   * @param {object} activity - The activity to delete.
    */
   function handleDelete(activity) {
     const confirmContent = createElement('div', { className: 'confirm-dialog' });

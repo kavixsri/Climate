@@ -11,12 +11,12 @@ import { getStore } from '../store/store.js';
 import { prefersReducedMotion } from '../utils/a11y.js';
 
 /**
- * @typedef {Object} AchievementDef
+ * @typedef {object} AchievementDef
  * @property {string} id - Unique achievement identifier.
  * @property {string} name - Display name.
  * @property {string} description - How to unlock this achievement.
  * @property {string} icon - Emoji icon.
- * @property {function(Object): boolean} condition - Evaluates state to determine if unlocked.
+ * @property {function(object): boolean} condition - Evaluates state to determine if unlocked.
  */
 
 /** @type {AchievementDef[]} */
@@ -138,7 +138,6 @@ const ACHIEVEMENT_DEFINITIONS = [
 
 /**
  * Renders the achievements grid into the given container.
- *
  * @param {HTMLElement} container - The DOM element to render into.
  * @returns {Function} Cleanup function that removes event listeners and subscriptions.
  */
@@ -250,7 +249,6 @@ export function renderAchievements(container) {
 
   /**
    * Creates a single achievement card DOM element.
-   *
    * @param {AchievementDef} def - Achievement definition.
    * @param {boolean} unlocked - Whether the achievement is unlocked.
    * @param {string|null} unlockedAt - ISO date string when unlocked, or null.
@@ -445,8 +443,7 @@ function computeStreak(activities) {
 /**
  * Checks if user has achieved a given percentage reduction in emissions
  * by comparing the most recent 30-day period to the preceding 30-day period.
- *
- * @param {Object} state - Application state.
+ * @param {object} state - Application state.
  * @param {number} pct - Target reduction percentage.
  * @returns {boolean} True if reduction achieved.
  */

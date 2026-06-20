@@ -5,14 +5,13 @@
  *
  * **Note:** XOR obfuscation is NOT cryptographic encryption. It protects
  * against casual browsing of devtools but not determined attackers.
- *
  * @module storage
  */
 
 import { obfuscate, deobfuscate } from '../utils/crypto.js';
 
 /**
- * @typedef {Object} StorageAdapter
+ * @typedef {object} StorageAdapter
  * @property {function(string): *} get - Retrieve a value by key.
  * @property {function(string, *): void} set - Store a value by key.
  * @property {function(string): void} remove - Remove a value by key.
@@ -53,11 +52,9 @@ function isStorageAvailable() {
  * All values are serialized to JSON, then XOR-obfuscated before storage.
  * Operations are wrapped in try/catch to handle quota errors and
  * private browsing mode gracefully.
- *
  * @param {string} namespace - Namespace prefix for key isolation.
  * @returns {StorageAdapter} Storage adapter with get, set, remove, clear, has methods.
  * @throws {TypeError} If namespace is not a non-empty string.
- *
  * @example
  * const storage = createStorage('app');
  * storage.set('theme', 'dark');

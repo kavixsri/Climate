@@ -24,7 +24,6 @@ const CATEGORY_ICONS = {
 
 /**
  * Renders the main dashboard into the given container.
- *
  * @param {HTMLElement} container - The DOM element to render dashboard into.
  * @returns {Function} Cleanup function that removes event listeners, subscriptions, and chart instances.
  */
@@ -36,10 +35,10 @@ export function renderDashboard(container) {
   /** @type {Function|null} */
   let unsubscribe = null;
 
-  /** @type {Object|null} */
+  /** @type {object | null} */
   let categoryChart = null;
 
-  /** @type {Object|null} */
+  /** @type {object | null} */
   let trendChart = null;
 
   clearElement(container);
@@ -422,7 +421,7 @@ function animateCountUp(el, target, formatter) {
 
 /**
  * Creates a stat card DOM element.
- * @param {Object} options
+ * @param {object} options
  * @param {string} options.title
  * @param {string} options.value
  * @param {string} options.detail

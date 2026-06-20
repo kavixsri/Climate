@@ -9,7 +9,7 @@ import { getStore } from '../store/store.js';
 import { handleKeyboardNav, prefersReducedMotion } from '../utils/a11y.js';
 
 /**
- * @typedef {Object} NavItem
+ * @typedef {object} NavItem
  * @property {string} id - Route identifier
  * @property {string} label - Display label
  * @property {string} icon - Emoji icon

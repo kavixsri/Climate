@@ -9,23 +9,23 @@ import { debounce } from '../utils/debounce.js';
 
 /**
  * Default application state shape.
- * @type {Readonly<Object>}
+ * @type {Readonly<object>}
  */
 const DEFAULT_STATE = Object.freeze({
-  /** @type {Array<Object>} Array of logged carbon activities */
+  /** @type {Array<object>} Array of logged carbon activities */
   activities: [],
-  /** @type {Array<Object>} Array of user-defined goals */
+  /** @type {Array<object>} Array of user-defined goals */
   goals: [],
-  /** @type {Array<Object>} Array of earned achievements */
+  /** @type {Array<object>} Array of earned achievements */
   achievements: [],
-  /** @type {Object} User profile and preferences */
+  /** @type {object} User profile and preferences */
   profile: {
     name: '',
     country: 'us',
     dietType: 'average',
     theme: 'dark',
   },
-  /** @type {Object} UI state (not persisted) */
+  /** @type {object} UI state (not persisted) */
   ui: {
     currentView: 'dashboard',
     modalOpen: false,
@@ -54,9 +54,9 @@ function deepClone(value) {
 
 /**
  * Merges persisted state with defaults, ensuring all keys exist.
- * @param {Object} persisted - The persisted state from storage.
- * @param {Object} defaults - The default state shape.
- * @returns {Object} Merged state with all default keys present.
+ * @param {object} persisted - The persisted state from storage.
+ * @param {object} defaults - The default state shape.
+ * @returns {object} Merged state with all default keys present.
  */
 function mergeWithDefaults(persisted, defaults) {
   const result = deepClone(defaults);
@@ -85,13 +85,13 @@ function mergeWithDefaults(persisted, defaults) {
  * State is always accessed via deep clone to prevent external mutation.
  */
 class Store {
-  /** @type {Object} */
+  /** @type {object} */
   #state;
 
   /** @type {Set<Function>} */
   #listeners;
 
-  /** @type {Object|null} */
+  /** @type {object | null} */
   #storage;
 
   /** @type {Function} */
@@ -100,7 +100,7 @@ class Store {
   /**
    * Creates a new Store instance.
    * Loads persisted state from storage or falls back to defaults.
-   * @param {Object} [storage=null] - Storage adapter with get/set methods.
+   * @param {object} [storage] - Storage adapter with get/set methods.
    */
   constructor(storage = null) {
     this.#listeners = new Set();
@@ -127,7 +127,7 @@ class Store {
   /**
    * Returns a deep clone of the current state.
    * The clone prevents external mutation of the store's internal state.
-   * @returns {Object} Deep clone of the current state.
+   * @returns {object} Deep clone of the current state.
    * @example
    * const state = store.getState();
    * state.activities.push(item); // Does NOT mutate the store
@@ -140,7 +140,7 @@ class Store {
    * Updates the state using an updater function.
    * The updater receives a deep clone of the current state and must return
    * the new state object. Listeners are notified and state is persisted.
-   * @param {function(Object): Object} updater - Function that receives current state clone and returns new state.
+   * @param {function(object): object} updater - Function that receives current state clone and returns new state.
    * @throws {TypeError} If updater is not a function.
    * @throws {TypeError} If updater does not return an object.
    * @example
@@ -264,7 +264,7 @@ let storeInstance = null;
 /**
  * Creates and returns the singleton Store instance.
  * If a store already exists, it is returned without creating a new one.
- * @param {Object} [storage=null] - Storage adapter to use for persistence.
+ * @param {object} [storage] - Storage adapter to use for persistence.
  * @returns {Store} The singleton store instance.
  * @example
  * import { createStorage } from './storage.js';
@@ -283,12 +283,14 @@ export function createStore(storage = null) {
  */
 export function __resetStoreInstance() {
   if (storeInstance) {
-    // Attempt to cancel any pending debounced saves
-    try { storeInstance = null; } catch (e) {}
+    try {
+      storeInstance = null;
+    } catch (_e) {
+      // ignore
+    }
   }
   storeInstance = null;
 }
-
 /**
  * Returns the existing singleton Store instance.
  * @returns {Store} The singleton store instance.

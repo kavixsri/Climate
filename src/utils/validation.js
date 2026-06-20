@@ -5,7 +5,6 @@
  * All user-facing data must pass through these validators before
  * being stored or rendered. HTML tags are stripped, strings are
  * length-limited, and numbers are clamped to safe ranges.
- *
  * @module validation
  */
 
@@ -36,10 +35,8 @@ const HTML_ENTITY_MAP = Object.freeze({
 /**
  * Escapes HTML special characters to prevent XSS.
  * Converts &, <, >, ", and ' to their HTML entity equivalents.
- *
  * @param {string} str - The string to escape.
  * @returns {string} The escaped string, or empty string if input is not a string.
- *
  * @example
  * escapeHtml('<script>alert("xss")</script>');
  * // '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;'
@@ -67,11 +64,9 @@ function stripHtmlTags(str) {
 /**
  * Sanitizes a string input by stripping HTML tags, trimming whitespace,
  * and enforcing a maximum length.
- *
  * @param {string} str - The string to sanitize.
- * @param {number} [maxLength=MAX_STRING_LENGTH] - Maximum allowed length.
+ * @param {number} [maxLength] - Maximum allowed length.
  * @returns {string} The sanitized string.
- *
  * @example
  * sanitizeString('  <b>Hello</b> World  '); // 'Hello World'
  * sanitizeString('x'.repeat(300)); // 200 chars
@@ -82,7 +77,7 @@ export function sanitizeString(str, maxLength = MAX_STRING_LENGTH) {
   }
 
   let sanitized = stripHtmlTags(str);
-  sanitized = sanitized.replace(/\x00/g, '');
+  sanitized = sanitized.replace(/\u0000/g, '');
   sanitized = sanitized.trim();
   // Collapse multiple whitespace to single space
   sanitized = sanitized.replace(/\s+/g, ' ');
@@ -98,12 +93,10 @@ export function sanitizeString(str, maxLength = MAX_STRING_LENGTH) {
 /**
  * Sanitizes a numeric value by parsing and clamping to a valid range.
  * Returns null if the value cannot be parsed to a finite number.
- *
  * @param {*} value - The value to sanitize.
- * @param {number} [min=MIN_AMOUNT] - Minimum allowed value (inclusive).
- * @param {number} [max=MAX_AMOUNT] - Maximum allowed value (inclusive).
+ * @param {number} [min] - Minimum allowed value (inclusive).
+ * @param {number} [max] - Maximum allowed value (inclusive).
  * @returns {number|null} The clamped number, or null if invalid.
- *
  * @example
  * sanitizeNumber('42.5', 0, 100); // 42.5
  * sanitizeNumber(-5, 0, 100);     // 0
@@ -125,10 +118,8 @@ export function sanitizeNumber(value, min = MIN_AMOUNT, max = MAX_AMOUNT) {
 /**
  * Validates whether a string is a valid ISO 8601 date (YYYY-MM-DD).
  * Also checks that the date is a real calendar date (e.g., rejects Feb 30).
- *
  * @param {string} dateString - The date string to validate.
  * @returns {boolean} True if the string is a valid date.
- *
  * @example
  * isValidDate('2024-03-15'); // true
  * isValidDate('2024-02-30'); // false
@@ -158,10 +149,8 @@ export function isValidDate(dateString) {
 
 /**
  * Checks whether a category string is a valid activity category.
- *
  * @param {string} category - The category to validate.
  * @returns {boolean} True if the category is valid.
- *
  * @example
  * isValidCategory('transport'); // true
  * isValidCategory('invalid');   // false
@@ -175,11 +164,9 @@ export function isValidCategory(category) {
 
 /**
  * Checks whether a type string is valid for a given category.
- *
  * @param {string} category - The activity category.
  * @param {string} type - The activity type to validate.
  * @returns {boolean} True if the type is valid for the given category.
- *
  * @example
  * isValidType('transport', 'car');  // true
  * isValidType('transport', 'lamp'); // false
@@ -197,20 +184,18 @@ export function isValidType(category, type) {
 }
 
 /**
- * @typedef {Object} ActivityValidationResult
+ * @typedef {object} ActivityValidationResult
  * @property {boolean} valid - Whether the activity passes validation.
  * @property {string[]} errors - Array of validation error messages.
- * @property {Object} [sanitized] - The sanitized activity object (only if valid).
+ * @property {object} [sanitized] - The sanitized activity object (only if valid).
  */
 
 /**
  * Validates and sanitizes a carbon activity entry.
  * Checks category, type, amount, date, and notes. Returns sanitized
  * values suitable for storage.
- *
- * @param {Object} activity - The activity object to validate.
+ * @param {object} activity - The activity object to validate.
  * @returns {ActivityValidationResult} Validation result with errors and sanitized data.
- *
  * @example
  * const result = validateActivity({
  *   category: 'transport',
@@ -302,7 +287,7 @@ export function validateActivity(activity) {
 }
 
 /**
- * @typedef {Object} GoalValidationResult
+ * @typedef {object} GoalValidationResult
  * @property {boolean} valid - Whether the goal passes validation.
  * @property {string[]} errors - Array of validation error messages.
  */
@@ -315,10 +300,8 @@ const VALID_PERIODS = Object.freeze(['daily', 'weekly', 'monthly', 'yearly']);
 
 /**
  * Validates a user goal object.
- *
- * @param {Object} goal - The goal object to validate.
+ * @param {object} goal - The goal object to validate.
  * @returns {GoalValidationResult} Validation result with errors.
- *
  * @example
  * const result = validateGoal({
  *   name: 'Reduce transport',

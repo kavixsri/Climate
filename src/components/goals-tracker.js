@@ -29,7 +29,6 @@ const STATUS_CONFIG = {
 
 /**
  * Renders the goals tracker into the given container.
- *
  * @param {HTMLElement} container - The DOM element to render into.
  * @returns {Function} Cleanup function that removes all event listeners and subscriptions.
  */
@@ -370,8 +369,7 @@ export function renderGoalsTracker(container) {
 
   /**
    * Creates a single goal card DOM element.
-   *
-   * @param {Object} goal - Goal data object.
+   * @param {object} goal - Goal data object.
    * @returns {HTMLElement} The goal card element.
    */
   function createGoalCard(goal) {
@@ -515,7 +513,7 @@ export function renderGoalsTracker(container) {
 
   /**
    * Handles goal deletion with confirmation.
-   * @param {Object} goal - The goal to delete.
+   * @param {object} goal - The goal to delete.
    */
   function handleDeleteGoal(goal) {
     const confirmContent = createElement('div', { className: 'confirm-dialog' });

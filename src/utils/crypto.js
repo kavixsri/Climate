@@ -5,7 +5,6 @@
  * encryption. It prevents casual inspection of data in browser devtools but
  * does NOT protect against determined attackers. Do not use for sensitive
  * data like passwords or financial information.
- *
  * @module crypto
  */
 
@@ -20,7 +19,6 @@ const XOR_KEY = 'C4rb0nL3ns_0bfu5c4t10n_K3y!';
 /**
  * XOR-encodes a string against the fixed key.
  * Each character is XOR'd with the corresponding key character (cycling).
- *
  * @param {string} input - The string to XOR-encode.
  * @returns {string} The XOR-encoded string.
  * @private
@@ -41,11 +39,9 @@ function xorCipher(input) {
  *
  * **Note:** This is obfuscation, not encryption. It prevents casual
  * reading of stored data but is trivially reversible.
- *
  * @param {string} data - The plaintext string to obfuscate.
  * @returns {string} Base64-encoded obfuscated string.
  * @throws {TypeError} If data is not a string.
- *
  * @example
  * const encoded = obfuscate('{"theme":"dark"}');
  * localStorage.setItem('prefs', encoded);
@@ -77,11 +73,9 @@ export function obfuscate(data) {
 /**
  * Deobfuscates a previously obfuscated string.
  * Reverses the base64 encoding and XOR cipher to recover the original data.
- *
  * @param {string} encoded - The base64-encoded obfuscated string.
  * @returns {string} The original plaintext string.
  * @throws {TypeError} If encoded is not a string.
- *
  * @example
  * const encoded = obfuscate('{"theme":"dark"}');
  * const original = deobfuscate(encoded);
@@ -114,9 +108,7 @@ export function deobfuscate(encoded) {
  * Generates a unique identifier string.
  * Uses crypto.randomUUID() when available (secure contexts),
  * with a fallback to a pseudo-random UUID v4 implementation.
- *
  * @returns {string} A UUID v4 string (e.g., '550e8400-e29b-41d4-a716-446655440000').
- *
  * @example
  * const id = generateId();
  * console.log(id); // 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d'

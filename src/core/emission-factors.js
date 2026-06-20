@@ -1,7 +1,6 @@
 /**
  * Emission factors sourced from EPA GHG Emission Factors Hub (2024)
  * and IPCC AR6 (2023). All values in kg CO₂e.
- *
  * @module emission-factors
  * @see {@link https://www.epa.gov/climateleadership/ghg-emission-factors-hub}
  * @see {@link https://www.ipcc.ch/assessment-report/ar6/}
@@ -20,7 +19,7 @@ export const CATEGORIES = Object.freeze([
 ]);
 
 /**
- * @typedef {Object} EmissionFactor
+ * @typedef {object} EmissionFactor
  * @property {number}  factor - Emission factor in kg CO₂e per unit.
  * @property {string}  unit   - The unit of measurement (e.g. 'km', 'kWh', 'day').
  * @property {string}  label  - Human-readable label for display.
@@ -30,7 +29,6 @@ export const CATEGORIES = Object.freeze([
 /**
  * Comprehensive emission factors organised by category and type.
  * Nested objects represent sub-types (e.g. car → gasoline / diesel).
- *
  * @type {Readonly<Record<string, Record<string, EmissionFactor | Record<string, EmissionFactor>>>>}
  */
 export const EMISSION_FACTORS = Object.freeze({
@@ -82,8 +80,7 @@ export const EMISSION_FACTORS = Object.freeze({
 
 /**
  * National and global per-capita averages in tonnes CO₂e per year.
- *
- * @typedef {Object} AverageEntry
+ * @typedef {object} AverageEntry
  * @property {number} value  - Average annual emissions in tonnes CO₂e.
  * @property {string} label  - Human-readable region name.
  * @property {string} source - Data source citation.
@@ -105,13 +102,11 @@ export const AVERAGES = Object.freeze({
  * Returns a flat array of all emission factors for a given category.
  * For categories with nested sub-types (e.g. transportation → car → gasoline),
  * the nested factors are flattened into the result.
- *
  * @param {string} category - One of the values in {@link CATEGORIES}.
  * @returns {Array<{key: string, factor: EmissionFactor}>}
  *   Flat list of `{ key, factor }` objects where `key` is the dot-separated
  *   path relative to the category (e.g. `'car.gasoline'`).
  * @throws {Error} If the category is not recognised.
- *
  * @example
  * const factors = getFactorsForCategory('energy');
  * // [{ key: 'electricity', factor: { factor: 0.417, … } }, …]
@@ -155,17 +150,14 @@ export function getFactorsForCategory(category) {
 
 /**
  * Looks up a specific emission factor by its dot-separated path.
- *
  * @param {string} path - Dot-separated path such as `'transportation.car.gasoline'`
  *   or `'energy.electricity'`.
  * @returns {EmissionFactor | null} The matching emission factor, or `null`
  *   if the path does not resolve to a valid leaf factor.
  * @throws {Error} If `path` is not a non-empty string.
- *
  * @example
  * const ef = getFactorByPath('transportation.car.gasoline');
  * // { factor: 0.21, unit: 'km', label: 'Gasoline Car', source: 'EPA 2024' }
- *
  * @example
  * const missing = getFactorByPath('transportation.hovercraft');
  * // null

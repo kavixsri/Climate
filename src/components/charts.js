@@ -50,11 +50,10 @@ function applyCanvasA11y(canvas, label, description) {
 
 /**
  * Renders a doughnut chart showing category breakdown of emissions.
- *
  * @param {HTMLCanvasElement} canvas - The canvas element to render into.
  * @param {Array<{ category: string, value: number, percentage: number }>} breakdown
  *   Array of category breakdown objects from calculateCategoryBreakdown().
- * @returns {Promise<Object>} The Chart.js instance.
+ * @returns {Promise<object>} The Chart.js instance.
  */
 export async function renderCategoryChart(canvas, breakdown) {
   const ChartClass = await loadChartJS();
@@ -122,11 +121,10 @@ export async function renderCategoryChart(canvas, breakdown) {
 
 /**
  * Renders a line chart showing emission trends over time.
- *
  * @param {HTMLCanvasElement} canvas - The canvas element to render into.
  * @param {Array<{ date: string, value: number }>} trendData
  *   Array of date/value pairs representing daily emissions.
- * @returns {Promise<Object>} The Chart.js instance.
+ * @returns {Promise<object>} The Chart.js instance.
  */
 export async function renderTrendChart(canvas, trendData) {
   const ChartClass = await loadChartJS();
@@ -209,11 +207,10 @@ export async function renderTrendChart(canvas, trendData) {
 
 /**
  * Renders a horizontal bar chart comparing user emissions to averages.
- *
  * @param {HTMLCanvasElement} canvas - The canvas element to render into.
  * @param {Array<{ label: string, userValue: number, averageValue: number }>} comparisons
  *   Array of comparison objects with labels and paired values.
- * @returns {Promise<Object>} The Chart.js instance.
+ * @returns {Promise<object>} The Chart.js instance.
  */
 export async function renderComparisonChart(canvas, comparisons) {
   const ChartClass = await loadChartJS();
@@ -304,8 +301,7 @@ export async function renderComparisonChart(canvas, comparisons) {
 
 /**
  * Safely destroys a Chart.js instance.
- *
- * @param {Object|null|undefined} chartInstance - The Chart.js instance to destroy.
+ * @param {object | null | undefined} chartInstance - The Chart.js instance to destroy.
  * @returns {void}
  */
 export function destroyChart(chartInstance) {
@@ -339,13 +335,13 @@ function createGradient(canvas, color) {
 /**
  * Creates a Chart.js plugin that renders total text in the center of a doughnut.
  * @param {number} total - Total value to display.
- * @returns {Object} Chart.js plugin descriptor.
+ * @returns {object} Chart.js plugin descriptor.
  */
 function createCenterTextPlugin(total) {
   return {
     id: 'centerText',
     /**
-     * @param {Object} chart
+     * @param {object} chart
      */
     afterDraw(chart) {
       const { ctx, chartArea } = chart;

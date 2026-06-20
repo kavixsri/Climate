@@ -2,7 +2,6 @@
  * Debounce, throttle, and idle-callback utilities for CarbonLens.
  * Provides performance-critical timing functions to limit the rate
  * of expensive operations like DOM updates and storage writes.
- *
  * @module debounce
  */
 
@@ -11,12 +10,10 @@
  * until after `delay` milliseconds have elapsed since the last call.
  * The debounced function includes a `cancel` method to abort pending calls
  * and a `flush` method to immediately invoke the pending call.
- *
  * @param {Function} fn - The function to debounce.
- * @param {number} [delay=300] - Delay in milliseconds.
+ * @param {number} [delay] - Delay in milliseconds.
  * @returns {Function & { cancel: Function, flush: Function }} The debounced function.
  * @throws {TypeError} If fn is not a function.
- *
  * @example
  * const saveDebounced = debounce(saveToStorage, 500);
  * input.addEventListener('input', saveDebounced);
@@ -51,7 +48,7 @@ export function debounce(fn, delay = 300) {
    */
   function debounced(...args) {
     pendingArgs = args;
-    // eslint-disable-next-line no-invalid-this
+     
     pendingThis = this;
 
     if (timeoutId !== null) {
@@ -99,12 +96,10 @@ export function debounce(fn, delay = 300) {
  * once per `limit` milliseconds. Uses the trailing-edge pattern:
  * the function runs immediately on the first call, then at most
  * once per interval afterward.
- *
  * @param {Function} fn - The function to throttle.
- * @param {number} [limit=300] - Minimum interval in milliseconds between invocations.
+ * @param {number} [limit] - Minimum interval in milliseconds between invocations.
  * @returns {Function} The throttled function.
  * @throws {TypeError} If fn is not a function.
- *
  * @example
  * const throttledScroll = throttle(handleScroll, 100);
  * window.addEventListener('scroll', throttledScroll);
@@ -134,12 +129,12 @@ export function throttle(fn, limit = 300) {
   function throttled(...args) {
     if (waiting) {
       lastArgs = args;
-      // eslint-disable-next-line no-invalid-this
+       
       lastThis = this;
       return;
     }
 
-    // eslint-disable-next-line no-invalid-this
+     
     fn.apply(this, args);
     waiting = true;
 
@@ -160,11 +155,9 @@ export function throttle(fn, limit = 300) {
  * Polyfilled requestIdleCallback.
  * Uses the native API when available, falling back to setTimeout
  * with a simulated IdleDeadline object.
- *
  * @param {function(IdleDeadline): void} fn - Callback to run during idle time.
  * @returns {number} An ID that can be used to cancel the callback.
  * @throws {TypeError} If fn is not a function.
- *
  * @example
  * const id = requestIdleCallback((deadline) => {
  *   while (deadline.timeRemaining() > 0) {

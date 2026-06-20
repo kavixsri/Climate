@@ -22,13 +22,12 @@ let cleanupTrapFocus = null;
 
 /**
  * Opens an accessible modal dialog.
- *
- * @param {Object} options - Modal configuration options.
+ * @param {object} options - Modal configuration options.
  * @param {string} options.title - Title text displayed in the modal header.
  * @param {HTMLElement|Function} options.content - A DOM element to place inside
  *   the modal body, or a function that receives the body element and populates it.
  * @param {Function} [options.onClose] - Optional callback invoked when the modal closes.
- * @param {'small'|'medium'|'large'} [options.size='medium'] - Modal width preset.
+ * @param {'small'|'medium'|'large'} [options.size] - Modal width preset.
  * @returns {{ close: Function }} An object with a `close()` method to programmatically close the modal.
  */
 export function openModal({ title, content, onClose, size = 'medium' }) {

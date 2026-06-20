@@ -3,7 +3,6 @@
  *
  * Analyses a user's emission profile and generates ranked, actionable
  * insights with estimated CO₂e savings.
- *
  * @module insights
  */
 
@@ -23,7 +22,7 @@ import { calculateCategoryBreakdown } from './calculator.js';
  */
 
 /**
- * @typedef {Object} Insight
+ * @typedef {object} Insight
  * @property {string}      id               - Unique identifier for the insight.
  * @property {string}      title            - Short headline.
  * @property {string}      description      - Detailed explanation.
@@ -35,7 +34,7 @@ import { calculateCategoryBreakdown } from './calculator.js';
  */
 
 /**
- * @typedef {Object} SuggestionTemplate
+ * @typedef {object} SuggestionTemplate
  * @property {string}      id
  * @property {string}      title
  * @property {string}      description
@@ -408,11 +407,9 @@ function _rankScore(suggestion) {
 
 /**
  * Returns categories sorted by their emission totals (descending).
- *
  * @param {Record<string, { total: number, percentage: number, count: number }>} breakdown
  *   Category breakdown as returned by {@link calculateCategoryBreakdown}.
  * @returns {Array<{ category: string, total: number, percentage: number }>}
- *
  * @example
  * const top = getTopEmissionCategories(breakdown);
  * // [{ category: 'transportation', total: 120, percentage: 55 }, …]
@@ -434,13 +431,11 @@ export function getTopEmissionCategories(breakdown) {
 /**
  * Returns actionable reduction suggestions for a specific category,
  * ordered by a combined impact × ease score.
- *
  * @param {string} category        - One of {@link CATEGORIES}.
  * @param {number} currentValueKg  - The user's current emissions (kg CO₂e)
  *   for this category.
  * @returns {Insight[]} Array of insights with `potentialSavingKg` calculated.
  * @throws {Error} If the category is not recognised or currentValueKg is invalid.
- *
  * @example
  * const tips = getReductionSuggestions('transportation', 2500);
  */
@@ -478,7 +473,6 @@ export function getReductionSuggestions(category, currentValueKg) {
 
 /**
  * Estimates the annual CO₂e saving (kg) if the user follows a given suggestion.
- *
  * @param {{ savingFraction?: number, potentialSavingKg?: number }} suggestion
  *   A suggestion template or insight object.
  * @param {number} currentValueKg - Current annual emissions for the relevant category in kg CO₂e.
@@ -517,16 +511,14 @@ export function calculatePotentialSavings(suggestion, currentValueKg) {
  * 4. Score suggestions by `impactLevel × 2 + easeLevel`, weighted by
  *    how large the category's share is.
  * 5. De-duplicate and return the top 5.
- *
  * @param {Array<import('./calculator.js').Activity>} activities
  *   The user's recent activities.
- * @param {Object} [goals]
+ * @param {object} [goals]
  *   Optional goals object. If a goal targets a specific category, suggestions
  *   for that category are boosted.
  * @param {string} [goals.focusCategory] - Category the user is actively
  *   trying to reduce.
  * @returns {Insight[]} Top 5 personalised insights, sorted by relevance.
- *
  * @example
  * const tips = generateInsights(myActivities, { focusCategory: 'energy' });
  */

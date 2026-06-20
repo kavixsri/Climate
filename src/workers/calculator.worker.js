@@ -8,7 +8,6 @@
  * Because ES module imports inside workers are not universally supported
  * across all browsers, the core calculation logic is **inlined** here.
  * This avoids runtime import failures while keeping the worker self-contained.
- *
  * @module calculator-worker
  */
 
@@ -67,7 +66,6 @@ const EMISSION_FACTORS = {
 
 /**
  * Resolves an emission factor from the factor tree.
- *
  * @param {string} category
  * @param {string} type
  * @param {string} [subtype]
@@ -97,8 +95,7 @@ function resolveFactor(category, type, subtype) {
 
 /**
  * Validates an activity object. Returns an array of error strings (empty = valid).
- *
- * @param {Object} activity
+ * @param {object} activity
  * @returns {string[]}
  */
 function validateActivity(activity) {
@@ -133,8 +130,7 @@ function validateActivity(activity) {
 
 /**
  * Calculates CO₂e for a single activity.
- *
- * @param {Object} activity
+ * @param {object} activity
  * @returns {{ co2e: number, category: string, date: string }}
  */
 function calculateActivityEmission(activity) {
@@ -168,8 +164,7 @@ function calculateActivityEmission(activity) {
 
 /**
  * Calculates totals and breakdown for an array of activities.
- *
- * @param {Object[]} activities
+ * @param {object[]} activities
  * @returns {{ total: number, breakdown: Record<string, number>, daily: number, weekly: number, monthly: number, annual: number, activityCount: number }}
  */
 function calculateTotalEmissions(activities) {
@@ -217,8 +212,7 @@ function calculateTotalEmissions(activities) {
 
 /**
  * Projects annual emissions from a sample period.
- *
- * @param {Object[]} activities
+ * @param {object[]} activities
  * @param {number} periodDays
  * @returns {{ annualTotal: number, annualTonnes: number, periodTotal: number, periodDays: number, dailyAverage: number, confidence: number }}
  */
@@ -252,8 +246,7 @@ function projectAnnualEmissions(activities, periodDays) {
 
 /**
  * Calculates category breakdown with percentages.
- *
- * @param {Object[]} activities
+ * @param {object[]} activities
  * @returns {Record<string, { total: number, percentage: number, count: number }>}
  */
 function calculateCategoryBreakdown(activities) {
@@ -308,6 +301,7 @@ function calculateCategoryBreakdown(activities) {
  *   error?: string       // Present on failure
  * }
  * ```
+ * @param event
  */
 self.onmessage = function handleMessage(event) {
   const { id, type, payload } = event.data || {};

@@ -2,14 +2,13 @@
  * Safe DOM manipulation utilities for CarbonLens.
  * NEVER uses innerHTML, eval(), or document.write().
  * All content is set via textContent or DOM API methods only.
- *
  * @module dom
  */
 
 /**
  * WeakMap tracking event listeners attached via addEventListenerSafe.
  * Enables bulk cleanup to prevent memory leaks.
- * @type {WeakMap<HTMLElement, Array<{event: string, handler: Function, options: Object}>>}
+ * @type {WeakMap<HTMLElement, Array<{event: string, handler: Function, options: object}>>}
  * @private
  */
 const listenerRegistry = new WeakMap();
@@ -52,15 +51,13 @@ const PROPERTY_ATTRS = new Set([
 /**
  * Creates an HTML element with attributes and children.
  * Uses only safe DOM API methods — never innerHTML.
- *
  * @param {string} tag - The HTML tag name (e.g., 'div', 'button').
- * @param {Object} [attributes={}] - Attribute key-value pairs.
+ * @param {object} [attributes] - Attribute key-value pairs.
  *   Supports: className, id, textContent, ariaLabel, role, tabIndex,
  *   data-* attributes, event handlers (onclick, etc. are NOT supported — use addEventListenerSafe).
- * @param {Array<HTMLElement|string>} [children=[]] - Child elements or text strings.
+ * @param {Array<HTMLElement|string>} [children] - Child elements or text strings.
  * @returns {HTMLElement} The created element.
  * @throws {TypeError} If tag is not a valid string.
- *
  * @example
  * const btn = createElement('button', {
  *   className: 'btn btn-primary',
@@ -68,7 +65,6 @@ const PROPERTY_ATTRS = new Set([
  *   ariaLabel: 'Submit form',
  *   tabIndex: 0,
  * });
- *
  * @example
  * const list = createElement('ul', { className: 'items' }, [
  *   createElement('li', { textContent: 'Item 1' }),
@@ -110,10 +106,8 @@ export function createElement(tag, attributes = {}, children = []) {
 
 /**
  * Creates a text node with the given content.
- *
  * @param {string} text - The text content.
  * @returns {Text} The created text node.
- *
  * @example
  * const text = createTextNode('Hello, world!');
  * container.appendChild(text);
@@ -125,10 +119,8 @@ export function createTextNode(text) {
 /**
  * Safely removes all child nodes from an element.
  * Uses a loop with removeChild rather than innerHTML = ''.
- *
  * @param {HTMLElement} element - The element to clear.
  * @throws {TypeError} If element is not a valid DOM element.
- *
  * @example
  * clearElement(document.getElementById('container'));
  */
@@ -146,11 +138,9 @@ export function clearElement(element) {
  * Sets multiple attributes on a DOM element safely.
  * Handles className, textContent, dataset, aria-* attributes,
  * and standard HTML attributes. Never sets innerHTML.
- *
  * @param {HTMLElement} element - The target element.
- * @param {Object} attrs - Key-value pairs of attributes to set.
+ * @param {object} attrs - Key-value pairs of attributes to set.
  * @throws {TypeError} If element is not a DOM element.
- *
  * @example
  * setAttributes(myDiv, {
  *   className: 'card active',
@@ -237,14 +227,12 @@ export function setAttributes(element, attrs) {
  * Adds an event listener with tracking for later cleanup.
  * All listeners added through this function can be removed in bulk
  * using removeAllListeners.
- *
  * @param {HTMLElement} element - The target element.
  * @param {string} event - The event name (e.g., 'click', 'keydown').
  * @param {Function} handler - The event handler function.
- * @param {Object} [options={}] - addEventListener options.
+ * @param {object} [options] - addEventListener options.
  * @returns {Function} A function to remove this specific listener.
  * @throws {TypeError} If arguments are invalid.
- *
  * @example
  * const removeClick = addEventListenerSafe(button, 'click', handleClick);
  * // Later...
@@ -286,9 +274,7 @@ export function addEventListenerSafe(element, event, handler, options = {}) {
 /**
  * Removes all tracked event listeners from an element.
  * Only removes listeners that were added via addEventListenerSafe.
- *
  * @param {HTMLElement} element - The element to clean up.
- *
  * @example
  * removeAllListeners(myComponent);
  */
@@ -312,10 +298,8 @@ export function removeAllListeners(element) {
 /**
  * Creates a DocumentFragment containing the given children.
  * Useful for batching DOM insertions to minimize reflows.
- *
  * @param {Array<HTMLElement|string>} children - Elements or text strings to include.
  * @returns {DocumentFragment} A fragment containing all children.
- *
  * @example
  * const fragment = createFragment([
  *   createElement('li', { textContent: 'A' }),
@@ -341,11 +325,9 @@ export function createFragment(children = []) {
 /**
  * Announces a message to screen readers via an aria-live region.
  * Creates the live region if it doesn't exist, then updates its content.
- *
  * @param {string} message - The message to announce.
- * @param {'polite'|'assertive'} [priority='polite'] - The aria-live priority level.
+ * @param {'polite'|'assertive'} [priority] - The aria-live priority level.
  *   'polite' waits for the user to be idle; 'assertive' interrupts immediately.
- *
  * @example
  * announceToScreenReader('Activity saved successfully');
  * announceToScreenReader('Error: invalid input', 'assertive');

@@ -29,7 +29,6 @@ const CATEGORY_ICONS = {
 
 /**
  * Renders the multi-step carbon calculator form into the given container.
- *
  * @param {HTMLElement} container - The DOM element to render into.
  * @returns {Function} Cleanup function that removes all event listeners.
  */
@@ -41,7 +40,7 @@ export function renderCalculatorForm(container) {
   /** @type {number} */
   let currentStep = 1;
 
-  /** @type {Object} */
+  /** @type {object} */
   const formData = {
     category: '',
     type: '',

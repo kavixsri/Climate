@@ -6,7 +6,6 @@
  *
  * All exported functions are **pure** — they return new objects
  * rather than mutating inputs.
- *
  * @module goals
  */
 
@@ -17,7 +16,7 @@ import { CATEGORIES } from './emission-factors.js';
 /* ------------------------------------------------------------------ */
 
 /**
- * @typedef {Object} Milestone
+ * @typedef {object} Milestone
  * @property {number}      percent    - Target percentage (e.g. 25, 50, 75, 100).
  * @property {boolean}     achieved   - Whether this milestone has been reached.
  * @property {string|null} achievedAt - ISO-8601 timestamp when achieved, or null.
@@ -28,7 +27,7 @@ import { CATEGORIES } from './emission-factors.js';
  */
 
 /**
- * @typedef {Object} Goal
+ * @typedef {object} Goal
  * @property {string}      id                     - Unique identifier (UUID v4-style).
  * @property {string}      name                   - Human-readable goal name.
  * @property {number}      targetReductionPercent  - Target reduction as a percentage (0-100).
@@ -51,7 +50,6 @@ import { CATEGORIES } from './emission-factors.js';
  * Generates a pseudo-random UUID v4 string.
  * Uses `crypto.randomUUID()` when available, otherwise falls back to
  * a Math.random-based generator.
- *
  * @returns {string}
  * @private
  */
@@ -69,7 +67,6 @@ function _generateId() {
 
 /**
  * Clamps a number between min and max (inclusive).
- *
  * @param {number} value
  * @param {number} min
  * @param {number} max
@@ -87,11 +84,9 @@ function _clamp(value, min, max) {
 /**
  * Auto-generates milestones at 25 %, 50 %, 75 %, and 100 % of the
  * target reduction.
- *
  * @param {Pick<Goal, 'targetReductionPercent'>} goal
  *   An object containing at least `targetReductionPercent`.
  * @returns {Milestone[]} Array of four milestone objects.
- *
  * @example
  * const ms = generateMilestones({ targetReductionPercent: 20 });
  * // [{ percent: 25, achieved: false, achievedAt: null }, …]
@@ -119,8 +114,7 @@ export function generateMilestones(goal) {
 
 /**
  * Creates a new carbon-reduction goal with auto-generated milestones.
- *
- * @param {Object} params
+ * @param {object} params
  * @param {string}  params.name                   - Human-readable goal name.
  * @param {number}  params.targetReductionPercent  - Target reduction percentage (1-100).
  * @param {number}  params.baselineEmissions       - Current baseline in kg CO₂e.
@@ -128,7 +122,6 @@ export function generateMilestones(goal) {
  * @param {string}  [params.category]              - Optional category to focus on.
  * @returns {Goal} The newly created goal object.
  * @throws {Error} If any required parameter is missing or invalid.
- *
  * @example
  * const goal = createGoal({
  *   name: 'Halve my transport emissions',
@@ -213,13 +206,11 @@ export function createGoal({ name, targetReductionPercent, baselineEmissions, de
  *     progress = (baseline - current) / (baseline - target) × 100
  *
  * The returned goal is a **new object** — the original is not mutated.
- *
  * @param {Goal} goal              - The existing goal object.
  * @param {number} currentEmissions - Latest measured emissions in kg CO₂e.
  * @returns {Goal} A new goal object with updated `currentEmissions`,
  *   `progress`, `milestones`, and `status`.
  * @throws {Error} If inputs are invalid.
- *
  * @example
  * const updated = updateGoalProgress(myGoal, 2200);
  */
@@ -280,11 +271,9 @@ export function updateGoalProgress(goal, currentEmissions) {
  * `achieved` flag is `true` and they represent recent progress).
  *
  * This is useful for triggering congratulatory notifications.
- *
  * @param {Goal} goal - The goal to inspect.
  * @returns {Milestone[]} Milestones with `achieved === true`.
  * @throws {TypeError} If goal is invalid.
- *
  * @example
  * const newlyAchieved = checkMilestones(updatedGoal);
  * // [{ percent: 25, achieved: true, achievedAt: '2024-…' }]
@@ -313,11 +302,9 @@ export function checkMilestones(goal) {
  *   trajectory for the elapsed time.
  * - **behind** — progress is more than 10 % below the expected trajectory.
  * - **on-track** — within ±10 % of the expected trajectory.
- *
  * @param {Goal} goal - The goal to evaluate.
  * @returns {GoalStatus} One of 'on-track', 'behind', 'ahead', 'completed', or 'expired'.
  * @throws {TypeError} If goal is invalid.
- *
  * @example
  * const status = getGoalStatus(myGoal);
  * // 'on-track'

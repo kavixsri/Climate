@@ -1,21 +1,20 @@
 /**
- * @fileoverview CarbonLens — Hash-based Client-Side Router.
+ * @file CarbonLens — Hash-based Client-Side Router.
  *
  * Provides simple, accessible hash-based routing with route cleanup,
  * document title updates, and screen-reader announcements.
- *
  * @module router
  */
 
 /**
- * @typedef {Object} Route
+ * @typedef {object} Route
  * @property {string} path - Hash path (e.g. '/dashboard')
  * @property {(container: HTMLElement) => (() => void)|void} component - Render function returning optional cleanup
  * @property {string} title - Page title suffix
  */
 
 /**
- * @typedef {Object} Router
+ * @typedef {object} Router
  * @property {(path: string) => void} navigate - Navigate to a route
  * @property {() => Route|null} getCurrentRoute - Get the current route object
  * @property {() => void} destroy - Tear down the router
@@ -52,11 +51,9 @@ function getHashPath() {
 
 /**
  * Create a hash-based client-side router.
- *
  * @param {Route[]} routes - Array of route definitions
  * @param {HTMLElement} outlet - The DOM element where views are rendered
  * @returns {Router} The router instance
- *
  * @example
  * const router = createRouter([
  *   { path: '/dashboard', component: renderDashboard, title: 'Dashboard' },

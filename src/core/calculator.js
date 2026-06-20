@@ -3,7 +3,6 @@
  *
  * All exported functions are **pure** — they produce no side effects and
  * return new objects rather than mutating inputs.
- *
  * @module calculator
  */
 
@@ -16,7 +15,6 @@ import { validateActivity } from '../utils/validation.js';
 
 /**
  * Safely resolves a nested emission factor from the EMISSION_FACTORS tree.
- *
  * @param {string} category
  * @param {string} type
  * @param {string} [subtype]
@@ -50,7 +48,6 @@ function _resolveFactor(category, type, subtype) {
 
 /**
  * Converts a number of days into a human-friendly period label.
- *
  * @param {number} days
  * @returns {string}
  * @private
@@ -68,7 +65,7 @@ function _periodLabel(days) {
 /* ------------------------------------------------------------------ */
 
 /**
- * @typedef {Object} Activity
+ * @typedef {object} Activity
  * @property {string}  category  - One of {@link CATEGORIES}.
  * @property {string}  type      - Emission type within the category (e.g. 'car').
  * @property {string}  [subtype] - Optional sub-type (e.g. 'gasoline').
@@ -77,7 +74,7 @@ function _periodLabel(days) {
  */
 
 /**
- * @typedef {Object} CalculatedActivity
+ * @typedef {object} CalculatedActivity
  * @property {string}  category
  * @property {string}  type
  * @property {string}  [subtype]
@@ -91,13 +88,11 @@ function _periodLabel(days) {
 
 /**
  * Calculates the CO₂e emissions for a single activity.
- *
  * @param {Activity} activity - The activity to calculate emissions for.
  * @returns {CalculatedActivity} A new object containing the original activity
  *   fields plus `co2e`, `unit`, `label`, and `source`.
  * @throws {Error} If the activity fails validation or the emission factor
  *   cannot be resolved.
- *
  * @example
  * const result = calculateActivityEmission({
  *   category: 'transportation',
@@ -135,7 +130,7 @@ export function calculateActivityEmission(activity) {
 }
 
 /**
- * @typedef {Object} TotalEmissions
+ * @typedef {object} TotalEmissions
  * @property {number} total     - Sum of all emissions in kg CO₂e.
  * @property {Record<string, number>} breakdown - Emissions per category in kg CO₂e.
  * @property {number} daily     - Estimated daily average (kg CO₂e).
@@ -151,11 +146,9 @@ export function calculateActivityEmission(activity) {
  * If the activities span multiple dates the function derives daily, weekly,
  * monthly, and annual estimates from the date range. If all activities share
  * a single date the period is assumed to be 1 day.
- *
  * @param {Activity[]} activities - Array of activity objects.
  * @returns {TotalEmissions} Aggregated emission statistics.
  * @throws {Error} If any individual activity is invalid.
- *
  * @example
  * const totals = calculateTotalEmissions([
  *   { category: 'energy', type: 'electricity', amount: 30, date: '2024-06-01' },
@@ -232,7 +225,7 @@ export function calculateTotalEmissions(activities) {
 }
 
 /**
- * @typedef {Object} CategoryBreakdownEntry
+ * @typedef {object} CategoryBreakdownEntry
  * @property {number} total      - Total emissions for the category in kg CO₂e.
  * @property {number} percentage - Percentage of overall emissions (0-100).
  * @property {number} count      - Number of activities in this category.
@@ -240,10 +233,8 @@ export function calculateTotalEmissions(activities) {
 
 /**
  * Returns a per-category breakdown with totals, percentages, and counts.
- *
  * @param {Activity[]} activities - Array of activity objects.
  * @returns {Record<string, CategoryBreakdownEntry>} Breakdown keyed by category.
- *
  * @example
  * const bd = calculateCategoryBreakdown(activities);
  * // { transportation: { total: 42, percentage: 60, count: 5 }, … }
@@ -286,7 +277,7 @@ export function calculateCategoryBreakdown(activities) {
 }
 
 /**
- * @typedef {Object} AnnualProjection
+ * @typedef {object} AnnualProjection
  * @property {number} annualTotal     - Projected annual emissions in kg CO₂e.
  * @property {number} annualTonnes    - Same value converted to tonnes CO₂e.
  * @property {number} periodTotal     - Actual total for the sample period.
@@ -304,7 +295,6 @@ export function calculateCategoryBreakdown(activities) {
  * - 7-29 days  → 0.5
  * - 30-89 days → 0.7
  * - 90+ days   → 0.9
- *
  * @param {Activity[]} activities - Activities within the sample period.
  * @param {number} periodDays     - Number of days the sample covers.
  * @returns {AnnualProjection} The projection result.
@@ -345,7 +335,7 @@ export function projectAnnualEmissions(activities, periodDays) {
 }
 
 /**
- * @typedef {Object} TrendResult
+ * @typedef {object} TrendResult
  * @property {'increasing' | 'decreasing' | 'stable' | 'insufficient_data'} direction
  *   The overall trend direction.
  * @property {number} percentageChange - Percentage change from the first to last period.
@@ -361,11 +351,9 @@ export function projectAnnualEmissions(activities, periodDays) {
  * lexicographically, so ISO week / month labels work well.
  *
  * A change of less than ±2 % is considered **stable**.
- *
  * @param {Record<string, Activity[]>} activitiesByPeriod
  *   Object mapping period labels to their activities.
  * @returns {TrendResult} The computed trend.
- *
  * @example
  * const trend = calculateTrend({
  *   '2024-W01': activitiesWeek1,
